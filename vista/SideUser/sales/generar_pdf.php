@@ -29,8 +29,8 @@ $pdf->Ln(5);
 
 $pdf->SetFont('Arial', 'I', 12);
 $pdf->Cell(0, 10, 'Veterinaria Vetdog', 0, 1, 'C');
-$pdf->Cell(0, 10, 'Calle Falsa 123, Ciudad', 0, 1, 'C');
-$pdf->Cell(0, 10, 'Telf: (123) 456-7890', 0, 1, 'C');
+$pdf->Cell(0, 10, 'Urb. Las Mercedes Sector 4 C.2 Casa N.6.', 0, 1, 'C');
+$pdf->Cell(0, 10, 'Telf: 0412-4773077', 0, 1, 'C');
 $pdf->Ln(10);
 
 $pdf->SetFont('Arial', 'B', 12);
@@ -59,8 +59,6 @@ $pdf->Cell(40, 10, 'Tipo de Pago:', 0);
 $pdf->Cell(0, 10, utf8_decode($venta['tipopa']), 0, 1);
 $pdf->Cell(40, 10, 'Comprobante:', 0);
 $pdf->Cell(0, 10, utf8_decode($venta['tipoc']), 0, 1);
-
-
 $pdf->Ln(20);
 
 $pdf->SetY(-40);
