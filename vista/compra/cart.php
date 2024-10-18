@@ -230,6 +230,15 @@ require_once '../../assets/db/connectionMysql.php';
                             <li>
                                 <a href="../../folder/raza">Razas</a>
                             </li>
+                            <li>
+                                <a href="../mascotas/animales_table.php">Mostrar Adopciones</a>
+                            </li>
+                            <li>
+                                <a href="../mascotas/animales_insert.php">Agregar Adopción</a>
+                            </li>
+                            <li>
+                                <a href="../mascotas/animales_update.php">Editar Adopción</a>
+                            </li>
                         </ul>
 </li>
 <!--======================================================================================================-->
@@ -250,7 +259,7 @@ require_once '../../assets/db/connectionMysql.php';
                             </li>
                         </ul>
     </li>
-    <!--======================================================================================================-->
+   
     <li class="active">
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">shopping_basket</i>
@@ -284,7 +293,7 @@ require_once '../../assets/db/connectionMysql.php';
 
                         </ul>
     </li>
-    <!--======================================================================================================-->
+   
         <aside id="rightsidebar" class="right-sidebar">
         </aside>
     </section>

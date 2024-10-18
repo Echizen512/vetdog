@@ -195,6 +195,15 @@ if (!isset($_SESSION['adminID'])) header('location: ./../login.php');
               <li>
                 <a href="../../folder/raza">Razas</a>
               </li>
+                            <li>
+                                <a href="../mascotas/animales_table.php">Mostrar Adopciones</a>
+                            </li>
+                            <li>
+                                <a href="../mascotas/animales_insert.php">Agregar Adopción</a>
+                            </li>
+                            <li>
+                                <a href="../mascotas/adopcion.php">Solicitudes</a>
+                            </li>
             </ul>
           </li>
 

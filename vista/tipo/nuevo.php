@@ -91,7 +91,7 @@ include_once './../../utils/audit.php';
               <span>INICIO</span>
             </a>
           </li>
-          <!--======================================================================================================-->
+         
           <li>
             <a href="javascript:void(0);" class="menu-toggle">
               <i class="material-icons">inbox</i>
@@ -106,7 +106,7 @@ include_once './../../utils/audit.php';
               </li>
             </ul>
           </li>
-          <!--======================================================================================================-->
+         
           <li>
             <a href="javascript:void(0);" class="menu-toggle">
               <i class="material-icons">low_priority</i>
@@ -151,7 +151,7 @@ include_once './../../utils/audit.php';
               </li>
             </ul>
           </li>
-          <!--======================================================================================================-->
+         
           <li>
             <a href="javascript:void(0);" class="menu-toggle">
               <i class="material-icons">flutter_dash</i>
@@ -170,9 +170,18 @@ include_once './../../utils/audit.php';
               <li>
                 <a href="../../folder/raza">Razas</a>
               </li>
+                            <li>
+                                <a href="../mascotas/animales_table.php">Mostrar Adopciones</a>
+                            </li>
+                            <li>
+                                <a href="../mascotas/animales_insert.php">Agregar Adopción</a>
+                            </li>
+                            <li>
+                                <a href="../mascotas/adopcion.php">Solicitudes</a>
+                            </li>
             </ul>
           </li>
-          <!--======================================================================================================-->
+         
           <li>
             <a href="javascript:void(0);" class="menu-toggle">
               <i class="material-icons">calendar_today</i>

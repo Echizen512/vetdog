@@ -197,6 +197,13 @@ require_once './../../assets/db/connectionMysql.php';
                             <li>
                                 <a href="../../folder/raza">Razas</a>
                             </li>
+                            <li>
+                                <a href="../mascotas/animales_table.php">Mostrar Adopciones</a>
+                            </li>
+                            <li>
+                                <a href="../mascotas/animales_insert.php">Agregar Adopción</a>
+                            </li>
+
                         </ul>
 </li>
 
@@ -270,7 +277,7 @@ require_once './../../assets/db/connectionMysql.php';
                             </li>
                         </ul>
     </li>
-    <!--======================================================================================================-->
+   
                   
 
     <li>
@@ -285,7 +292,7 @@ require_once './../../assets/db/connectionMysql.php';
             </ul>
     </li>
 
-    <!--======================================================================================================-->
+   
         <aside id="rightsidebar" class="right-sidebar">
         </aside>
     </section>

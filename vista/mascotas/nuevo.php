@@ -172,6 +172,13 @@ require_once './../../utils/audit.php';
                             <li>
                                 <a href="../../folder/raza">Razas</a>
                             </li>
+                            <li>
+                                <a href="../mascotas/animales_table.php">Mostrar Adopciones</a>
+                            </li>
+                            <li>
+                                <a href="../mascotas/animales_insert.php">Agregar Adopción</a>
+                            </li>
+
                         </ul>
 </li>
 

@@ -118,7 +118,7 @@ require_once './../../utils/audit.php';
               <span>INICIO</span>
             </a>
           </li>
-          <!--======================================================================================================-->
+         
           <li>
             <a href="javascript:void(0);" class="menu-toggle">
               <i class="material-icons">inbox</i>
@@ -133,7 +133,7 @@ require_once './../../utils/audit.php';
               </li>
             </ul>
           </li>
-          <!--======================================================================================================-->
+         
           <li>
             <a href="javascript:void(0);" class="menu-toggle">
               <i class="material-icons">low_priority</i>
@@ -149,7 +149,7 @@ require_once './../../utils/audit.php';
 
             </ul>
           </li>
-          <!--======================================================================================================-->
+         
           <li>
             <a href="javascript:void(0);" class="menu-toggle">
               <i class="material-icons">supervisor_account</i>
@@ -179,7 +179,7 @@ require_once './../../utils/audit.php';
               </li>
             </ul>
           </li>
-          <!--======================================================================================================-->
+         
           <li>
             <a href="javascript:void(0);" class="menu-toggle">
               <i class="material-icons">flutter_dash</i>
@@ -198,9 +198,18 @@ require_once './../../utils/audit.php';
               <li>
                 <a href="../../folder/raza">Razas</a>
               </li>
+                            <li>
+                                <a href="../mascotas/animales_table.php">Mostrar Adopciones</a>
+                            </li>
+                            <li>
+                                <a href="../mascotas/animales_insert.php">Agregar Adopción</a>
+                            </li>
+                            <li>
+                                <a href="../mascotas/adopcion.php">Solicitudes</a>
+                            </li>
             </ul>
           </li>
-          <!--======================================================================================================-->
+         
           <li>
             <a href="javascript:void(0);" class="menu-toggle">
               <i class="material-icons">calendar_today</i>
@@ -238,7 +247,7 @@ require_once './../../utils/audit.php';
               </li>
             </ul>
           </li>
-          <!--======================================================================================================-->
+         
           <aside id="rightsidebar" class="right-sidebar"></aside>
       </div>
   </section>

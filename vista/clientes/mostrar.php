@@ -1,17 +1,20 @@
 ﻿<?php
 session_start();
 
-if (!isset($_SESSION['adminID'])) header('location: ./../login.php');
+if (!isset($_SESSION['adminID']))
+  header('location: ./../login.php');
 require_once '../assets/db/connectionMysql.php';
 
 ?>
 <!DOCTYPE html>
 <html lang="es-ES">
+
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+    type="text/css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
   <!-- Bootstrap Core Css -->
   <link href="../assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -32,6 +35,7 @@ require_once '../assets/db/connectionMysql.php';
   <script src="../assets/js/tippy-bundle.umd.js"></script>
   <title>Registrar Clientes Administrador | Beatriz Fagundez</title>
 </head>
+
 <body class="theme-red">
   <!-- Page Loader -->
   <div class="page-loader-wrapper">
@@ -59,7 +63,8 @@ require_once '../assets/db/connectionMysql.php';
   <nav class="navbar">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+        <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse"
+          data-target="#navbar-collapse" aria-expanded="false"></a>
         <a href="javascript:void(0);" class="bars"></a>
         <a class="navbar-brand" href="../panel-admin/administrador"> CONSULTORIO - BEATRIZ FAGUNDEZ</a>
       </div>
@@ -105,7 +110,7 @@ require_once '../assets/db/connectionMysql.php';
                           <td class="text-center"><?php echo $va['correo']; ?></td>
                           <td class="text-center"><?php echo $va['direc']; ?></td>
                           <td class="text-center"><?php
-                            if ($va['estado'] == 1) { ?>
+                          if ($va['estado'] == 1) { ?>
                               <form method="get" action="javascript:activo('<?php echo $va['id_due']; ?>')">
                                 <span class="label label-success">Activo</span>
                               </form>
@@ -113,15 +118,16 @@ require_once '../assets/db/connectionMysql.php';
                               <form method="get" action="javascript:inactivo('<?php echo $va['id_due']; ?>')">
                                 <button type="submit" class="btn btn-danger btn-xs">Inactivo</button>
                               </form>
-                            <?php  } ?>
+                            <?php } ?>
                           </td>
                           <td style="display: grid;place-items:center">
-                            <a type="button" href="../vista/clientes/edit?id=<?php echo $va["id_due"]; ?>" class="btn bg-blue btn-circle waves-effect waves-circle waves-float btnEdit">
+                            <a type="button" href="../vista/clientes/edit?id=<?php echo $va["id_due"]; ?>"
+                              class="btn bg-blue btn-circle waves-effect waves-circle waves-float btnEdit">
                               <i class="material-icons">autorenew</i>
                             </a>
                           </td>
                         </tr>
-                    <?php
+                        <?php
                       }
                     }
                     ?>
@@ -168,42 +174,43 @@ require_once '../assets/db/connectionMysql.php';
   <script src="../assets/js/demo.js"></script>
 
   <?php
-  if(isset($_SESSION['message'])) { ?>
+  if (isset($_SESSION['message'])) { ?>
     <script type="text/javascript">
       const msg = '<?php echo $_SESSION['message'] ?>';
 
-      if(msg.includes('pudo')) {
-        swal("Error",msg,"error").then(function() {
+      if (msg.includes('pudo')) {
+        swal("Error", msg, "error").then(function () {
           window.location = "clientes";
         });
       } else {
-        swal("¡Actualizado!",msg, "success").then(function() {
+        swal("¡Actualizado!", msg, "success").then(function () {
           window.location = "clientes";
         });
       }
     </script>
-  <?php 
+    <?php
     unset($_SESSION['message']);
   }
-?>
-<script>
-'use strict';
-document.querySelectorAll('.btnEdit').forEach(btn => {
-  tippy(btn, {
-    content: 'Editar',
-    placement: 'bottom',
-  })
-})
+  ?>
+  <script>
+    'use strict';
+    document.querySelectorAll('.btnEdit').forEach(btn => {
+      tippy(btn, {
+        content: 'Editar',
+        placement: 'bottom',
+      })
+    })
 
-$(document).ready(function() {
-  $('.js-exportable').DataTable({
-  responsive: true,
-      "language": {
+    $(document).ready(function () {
+      $('.js-exportable').DataTable({
+        responsive: true,
+        "language": {
           "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-      }
-  });
-});
+        }
+      });
+    });
 
-</script>
+  </script>
 </body>
+
 </html>

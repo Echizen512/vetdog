@@ -13,13 +13,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
   $quotesID = $_GET['quotesID'];
 
   $sql = "SELECT COUNT(*) as totalPets FROM quotes_pets WHERE quotesID = '$quotesID'";
-  $results = mysqli_query($conn,$sql);
+  $results = mysqli_query($conn, $sql);
 
-  foreach($results as $row) {
+  foreach ($results as $row) {
     $numberPets = $row['totalPets'];
-  } 
+  }
 
-  if(empty($data['data']['id_vet']) || empty($data['data']['attended']) || empty($data['data']['cost']) || empty($data['data']['start']) || empty($data['data']['end']) || empty($_GET['quotesID']) || empty($data['checkboxValues'])) {
+  if (empty($data['data']['id_vet']) || empty($data['data']['attended']) || empty($data['data']['cost']) || empty($data['data']['start']) || empty($data['data']['end']) || empty($_GET['quotesID']) || empty($data['checkboxValues'])) {
     $response = array('info' => '¡no puede enviar datos vacíos!');
     echo json_encode($response);
     exit;
@@ -51,18 +51,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
   }
 
   $sql = "UPDATE quotes SET vetID = '$vetID', attended = '$attended', cost = '$cost', start = '$start', end = '$end' WHERE quotesID = '$quotesID'";
-  
-  if(mysqli_query($conn,$sql)) {
+
+  if (mysqli_query($conn, $sql)) {
     //-audit
     $tableID = mysqli_insert_id($conn);
     $adminID = $_SESSION['adminID'];
     $action = "Se acepto una solicitud de cita";
     $rol = "administrador";
     $nameTable = "cita";
-    audit($tableID,$nameTable,$adminID,$rol,$action);
-    
+    audit($tableID, $nameTable, $adminID, $rol, $action);
+
     $response = array('success' => true);
     echo json_encode($response);
     exit;
-  };
+  }
+  ;
 }

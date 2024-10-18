@@ -1,13 +1,14 @@
 <?php
 session_start();
-class Connection {
+class Connection
+{
 	private $server = "mysql:host=localhost;dbname=vetdog";
 	private $username = "root";
 	private $password = "";
-	private $options  = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,);
+	private $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, );
 	protected $conn;
-
-	public function open() {
+	public function open()
+	{
 		try {
 			$this->conn = new PDO($this->server, $this->username, $this->password, $this->options);
 			return $this->conn;
@@ -15,12 +16,11 @@ class Connection {
 			echo "Hubo un problema con la conexión: " . $e->getMessage();
 		}
 	}
-
-	public function close() {
+	public function close()
+	{
 		$this->conn = null;
 	}
 }
-
 if (isset($_GET['id'])) {
 	$database = new Connection();
 	$db = $database->open();
@@ -31,10 +31,8 @@ if (isset($_GET['id'])) {
 	} catch (PDOException $e) {
 		$_SESSION['message'] = $e->getMessage();
 	}
-
 	$database->close();
 } else {
 	$_SESSION['message'] = 'Seleccionar miembro para eliminar primero';
 }
-
 header('location: ../../folder/categorias');

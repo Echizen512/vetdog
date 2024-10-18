@@ -1,15 +1,18 @@
 ﻿<?php
 session_start();
-if (!isset($_SESSION['adminID'])) header('location: ../vista/login.php');
+if (!isset($_SESSION['adminID']))
+  header('location: ../vista/login.php');
 require_once './../assets/db/connectionMysql.php';
 ?>
 <!DOCTYPE html>
 <html lang="es-ES">
+
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+    type="text/css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
   <!-- Bootstrap Core Css -->
   <link href="../assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -32,43 +35,60 @@ require_once './../assets/db/connectionMysql.php';
   <title>Registrar Clientes Administrador | Beatriz Fagundez</title>
 </head>
 <style>
-input[type="checkbox"] {
-  display: inline-block !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  margin: 0 !important;
-  padding: 0 !important; 
-  float: none !important; 
-  position: static !important;
-}
-.showDiagnosis {
-  transform: scale(0.8);
-}
-.swal2-popup {
-  width: 500px; /* Ancho deseado */
-  height: 300px; /* Alto deseado */
-}
-.swal2-title {
-  font-size: 28px; /* Tamaño de fuente para el título */
-}
-#swal2-html-container {
-  font-size: 20px; /* Tamaño de fuente para el contenido */
-}
-.swal2-confirm, .swal2-cancel {
-  font-size: 18px !important; /* Tamaño de fuente para el botón de confirmación */
-  padding: 10px 18px !important; /* Padding del botón de confirmación */
-}
-.swal2-icon {
-  font-size: 12px; /* Tamaño de fuente para el icono */
-}
-.swal2-select {
-  display: none !important;
-  opacity: 0 !important;
-}
-.swal2-textarea {
-  font-size: 2rem !important;
-}
+  input[type="checkbox"] {
+    display: inline-block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    float: none !important;
+    position: static !important;
+  }
+
+  .showDiagnosis {
+    transform: scale(0.8);
+  }
+
+  .swal2-popup {
+    width: 500px;
+    /* Ancho deseado */
+    height: 300px;
+    /* Alto deseado */
+  }
+
+  .swal2-title {
+    font-size: 28px;
+    /* Tamaño de fuente para el título */
+  }
+
+  #swal2-html-container {
+    font-size: 20px;
+    /* Tamaño de fuente para el contenido */
+  }
+
+  .swal2-confirm,
+  .swal2-cancel {
+    font-size: 18px !important;
+    /* Tamaño de fuente para el botón de confirmación */
+    padding: 10px 18px !important;
+    /* Padding del botón de confirmación */
+  }
+
+  .swal2-icon {
+    font-size: 12px;
+    /* Tamaño de fuente para el icono */
+  }
+
+  .swal2-select {
+    display: none !important;
+    opacity: 0 !important;
+  }
+
+  .swal2-textarea {
+    font-size: 2rem !important;
+  }
 </style>
+
 <body class="theme-red">
   <!-- Page Loader -->
   <div class="page-loader-wrapper">
@@ -96,17 +116,18 @@ input[type="checkbox"] {
   <nav class="navbar">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+        <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse"
+          data-target="#navbar-collapse" aria-expanded="false"></a>
         <a href="javascript:void(0);" class="bars"></a>
         <a class="navbar-brand" href="../panel-admin/administrador"> CONSULTORIO - BEATRIZ FAGUNDEZ</a>
       </div>
-      </div>
+    </div>
     </div>
   </nav>
   <!-- #Top Bar -->
 
   <section>
-         <!-- Left Sidebar -->
+    <!-- Left Sidebar -->
     <aside id="leftsidebar" class="sidebar">
       <!-- User Info -->
       <div class="user-info">
@@ -114,195 +135,199 @@ input[type="checkbox"] {
           <img src="../../assets/img/mujerico.png" width="48" height="48" alt="User" />
         </div> -->
         <div class="info-container">
-          <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo ucfirst($_SESSION['name']); ?></div>
+          <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <?php echo ucfirst($_SESSION['name']); ?></div>
           <div class="btn-group user-helper-dropdown">
-            <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+            <i class="material-icons" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="true">keyboard_arrow_down</i>
             <ul class="dropdown-menu pull-right">
-              <li><a href="../pages-logout"><img src="./../../assets/icons/MaterialSymbolsLightExitToApp.svg" style="width: 25px"> Cerrar Sesión</a></li>
-              <li><a href="./../panel-admin/edit-admin.php" style="display: flex;gap: 5px;"><img src="./../../assets/icons/IconParkSolidConfig.svg" style="width: 25px">Editar perfil</a></li>
+              <li><a href="../pages-logout"><img src="./../../assets/icons/MaterialSymbolsLightExitToApp.svg"
+                    style="width: 25px"> Cerrar Sesión</a></li>
+              <li><a href="./../panel-admin/edit-admin.php" style="display: flex;gap: 5px;"><img
+                    src="./../../assets/icons/IconParkSolidConfig.svg" style="width: 25px">Editar perfil</a></li>
             </ul>
           </div>
         </div>
       </div>
-            <!-- #User Info -->
+      <!-- #User Info -->
 
 
-            <div class="menu">
-                <ul class="list">
-                    <li class="header">MENÚ DE NAVEGACIÓN</li>
-                    <li>
-                        <a href="../vista/panel-admin/administrador">
-                            <i class="material-icons">home</i>
-                            <span>INICIO</span>
-                        </a>
-                    </li>
+      <div class="menu">
+        <ul class="list">
+          <li class="header">MENÚ DE NAVEGACIÓN</li>
+          <li>
+            <a href="../vista/panel-admin/administrador">
+              <i class="material-icons">home</i>
+              <span>INICIO</span>
+            </a>
+          </li>
 
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">inbox</i>
-                            <span>PRODUCTOS</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../vista/productos/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../folder/productos">Listar / Modificar</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">low_priority</i>
-                            <span>CATEGORÍAS</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../vista/categorias/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../folder/categorias">Listar / Modificar</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">supervisor_account</i>
-                            <span>CLIENTES</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../vista/clientes/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../folder/clientes">Listar / Modificar</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">person_pin</i>
-                            <span>VETERINARIOS</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../vista/veterinarios/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../folder/veterinarios">Listar / Modificar</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">flutter_dash</i>
-                            <span>MASCOTAS</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../vista/mascotas/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../folder/mascotas">Listar / Modificar</a>
-                            </li>
-                            <li>
-                                <a href="../folder/tipo">Tipos</a>
-                            </li>
-                            <li>
-                                <a href="../folder/raza">Razas</a>
-                            </li>
-                        </ul>
-</li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">business</i>
-                            <span>PROVEEDORES</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../vista/proveedores/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../folder/proveedores">Listar / Modificar</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">shopping_basket</i>
-                            <span>COMPRA</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../vista/compra/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../folder/compra">Listar / Modificar</a>
-                            </li>
-
-                            <li>
-                                <a href="../vista/compra/compras_fecha">Consultar por fecha</a>
-                            </li>
-                        </ul>
-                </li>
-
-                <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">monetization_on</i>
-                            <span>VENTA</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../vista/venta/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../folder/venta">Listar / Modificar</a>
-                            </li>
-                            <li>
-                                <a href="../vista/venta/venta_fecha">Consultar por fecha</a>
-                            </li>
-                        </ul>
-                </li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">calendar_today</i>
-                            <span>CITAS</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../vista/citas/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../folder/citas">Listar / Modificar</a>
-                            </li>
-                            <li>
-                                <a href="../folder/servicio">Servicio</a>
-                            </li>
-                        </ul>
-    </li>
-    
-        <li>
+          <li>
             <a href="javascript:void(0);" class="menu-toggle">
-                <i class="material-icons">assessment</i>
-                <span>BITÁCORA</span>
+              <i class="material-icons">inbox</i>
+              <span>PRODUCTOS</span>
             </a>
             <ul class="ml-menu">
-                <li>
-                <a href="../vista/audit/mostrar.php">Mostrar</a>
-                </li>
+              <li>
+                <a href="../vista/productos/nuevo">Registrar</a>
+              </li>
+              <li>
+                <a href="../folder/productos">Listar / Modificar</a>
+              </li>
             </ul>
-        </li>
+          </li>
 
-        <aside id="rightsidebar" class="right-sidebar">
-        </aside>
-    </section>
+          <li>
+            <a href="javascript:void(0);" class="menu-toggle">
+              <i class="material-icons">low_priority</i>
+              <span>CATEGORÍAS</span>
+            </a>
+            <ul class="ml-menu">
+              <li>
+                <a href="../vista/categorias/nuevo">Registrar</a>
+              </li>
+              <li>
+                <a href="../folder/categorias">Listar / Modificar</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="javascript:void(0);" class="menu-toggle">
+              <i class="material-icons">supervisor_account</i>
+              <span>CLIENTES</span>
+            </a>
+            <ul class="ml-menu">
+              <li>
+                <a href="../vista/clientes/nuevo">Registrar</a>
+              </li>
+              <li>
+                <a href="../folder/clientes">Listar / Modificar</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="javascript:void(0);" class="menu-toggle">
+              <i class="material-icons">person_pin</i>
+              <span>VETERINARIOS</span>
+            </a>
+            <ul class="ml-menu">
+              <li>
+                <a href="../vista/veterinarios/nuevo">Registrar</a>
+              </li>
+              <li>
+                <a href="../folder/veterinarios">Listar / Modificar</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="javascript:void(0);" class="menu-toggle">
+              <i class="material-icons">flutter_dash</i>
+              <span>MASCOTAS</span>
+            </a>
+            <ul class="ml-menu">
+              <li>
+                <a href="../vista/mascotas/nuevo">Registrar</a>
+              </li>
+              <li>
+                <a href="../folder/mascotas">Listar / Modificar</a>
+              </li>
+              <li>
+                <a href="../folder/tipo">Tipos</a>
+              </li>
+              <li>
+                <a href="../folder/raza">Razas</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="javascript:void(0);" class="menu-toggle">
+              <i class="material-icons">business</i>
+              <span>PROVEEDORES</span>
+            </a>
+            <ul class="ml-menu">
+              <li>
+                <a href="../vista/proveedores/nuevo">Registrar</a>
+              </li>
+              <li>
+                <a href="../folder/proveedores">Listar / Modificar</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="javascript:void(0);" class="menu-toggle">
+              <i class="material-icons">shopping_basket</i>
+              <span>COMPRA</span>
+            </a>
+            <ul class="ml-menu">
+              <li>
+                <a href="../vista/compra/nuevo">Registrar</a>
+              </li>
+              <li>
+                <a href="../folder/compra">Listar / Modificar</a>
+              </li>
+
+              <li>
+                <a href="../vista/compra/compras_fecha">Consultar por fecha</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="javascript:void(0);" class="menu-toggle">
+              <i class="material-icons">monetization_on</i>
+              <span>VENTA</span>
+            </a>
+            <ul class="ml-menu">
+              <li>
+                <a href="../vista/venta/nuevo">Registrar</a>
+              </li>
+              <li>
+                <a href="../folder/venta">Listar / Modificar</a>
+              </li>
+              <li>
+                <a href="../vista/venta/venta_fecha">Consultar por fecha</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="javascript:void(0);" class="menu-toggle">
+              <i class="material-icons">calendar_today</i>
+              <span>CITAS</span>
+            </a>
+            <ul class="ml-menu">
+              <li>
+                <a href="../vista/citas/nuevo">Registrar</a>
+              </li>
+              <li>
+                <a href="../folder/citas">Listar / Modificar</a>
+              </li>
+              <li>
+                <a href="../folder/servicio">Servicio</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="javascript:void(0);" class="menu-toggle">
+              <i class="material-icons">assessment</i>
+              <span>BITÁCORA</span>
+            </a>
+            <ul class="ml-menu">
+              <li>
+                <a href="../vista/audit/mostrar.php">Mostrar</a>
+              </li>
+            </ul>
+          </li>
+
+          <aside id="rightsidebar" class="right-sidebar">
+          </aside>
+  </section>
 
   <section class="content">
     <div class="container-fluid">
@@ -332,46 +357,51 @@ input[type="checkbox"] {
                     foreach ($dato as $value) {
                       foreach ($value as $key => $va) { ?>
                         <tr>
-                          <td class="text-center"><?= $key + 1 ; ?></td>
+                          <td class="text-center"><?= $key + 1; ?></td>
                           <td class="text-center"><?= $va['nom_due'] ?>&nbsp;<?= $va['ape_due'] ?></td>
-                          <?php 
-                            $quotesID = $va['quotesID'];
-                            
-                            $sql = "SELECT SUM(qs.priceTotal) as priceTotal FROM quotes_services as qs JOIN service AS s WHERE qs.serviceID = s.id_servi AND qs.quotesID = '$quotesID'";
+                          <?php
+                          $quotesID = $va['quotesID'];
 
-                            $result = mysqli_query($conn,$sql);
-                            foreach ($result as $row) { ?>
-                              <td class="text-center"><?= $va['cost'] + $row['priceTotal'] ?>$</td>
-                            <?php } ?>
-                          <td class="text-center"><?= date('d/m/Y',strtotime($va['start'])) ?></td>
-                          <td class="text-center"><?= date('d/m/Y',strtotime($va['end'])) ?></td>
+                          $sql = "SELECT SUM(qs.priceTotal) as priceTotal FROM quotes_services as qs JOIN service AS s WHERE qs.serviceID = s.id_servi AND qs.quotesID = '$quotesID'";
+
+                          $result = mysqli_query($conn, $sql);
+                          foreach ($result as $row) { ?>
+                            <td class="text-center"><?= $va['cost'] + $row['priceTotal'] ?>$</td>
+                          <?php } ?>
+                          <td class="text-center"><?= date('d/m/Y', strtotime($va['start'])) ?></td>
+                          <td class="text-center"><?= date('d/m/Y', strtotime($va['end'])) ?></td>
                           <td style="display: flex;justify-content: center;">
-                            <button onclick="nose('<?= $va['quotesID'] ?>','<?= $va['ownerID'] ?>')" class="btn bg-blue btn-circle waves-effect waves-circle waves-float btn-pdf" style="display: grid;place-items: center;">
-                              <img src="./../assets/icons/TeenyiconsPdfOutline.svg" style="width: 100%;height: 100%;"/>
+                            <button onclick="nose('<?= $va['quotesID'] ?>','<?= $va['ownerID'] ?>')"
+                              class="btn bg-blue btn-circle waves-effect waves-circle waves-float btn-pdf"
+                              style="display: grid;place-items: center;">
+                              <img src="./../assets/icons/TeenyiconsPdfOutline.svg" style="width: 100%;height: 100%;" />
                             </button>
                             <?php if ($va['status'] == 1) { ?>
-                              <button class="btn btn-primary showDiagnosis" value="<?= $va['quotesID'] ?>">Ver Diagnóstico</button>
-                              <button class="btn btn-primary" style="transform: scale(0.8)" onClick="updateDiagnosis(<?= $va['quotesID'] ?>)">Editar</button>
+                              <button class="btn btn-primary showDiagnosis" value="<?= $va['quotesID'] ?>">Ver
+                                Diagnóstico</button>
+                              <button class="btn btn-primary" style="transform: scale(0.8)"
+                                onClick="updateDiagnosis(<?= $va['quotesID'] ?>)">Editar</button>
 
-                            <?php }?>
-                          </td> 
+                            <?php } ?>
+                          </td>
                           <td class="text-center">
                             <div style="display: flex;justify-content: center;gap: 20px;align-items: center">
                               <?php
                               if ($va['status'] == 1) { ?>
-                                  <span class="label label-success" style="transform: scale(1.2);">Atendido</span>
+                                <span class="label label-success" style="transform: scale(1.2);">Atendido</span>
                               <?php } else { ?>
-                                  <input type="checkbox" class="checkbox-verify" value="<?= $va['quotesID'] ?>" style="transform: scale(1.5);">
+                                <input type="checkbox" class="checkbox-verify" value="<?= $va['quotesID'] ?>"
+                                  style="transform: scale(1.5);">
                               <?php } ?>
                             </div>
                           </td>
                         </tr>
-                    <?php
+                        <?php
                       }
                     }
                     ?>
                   </tbody>
-                </table> 
+                </table>
               </div>
             </div>
           </div>
@@ -411,132 +441,133 @@ input[type="checkbox"] {
   <script src="../assets/js/demo.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script>
-'use strict';
-document.querySelectorAll('.btn-pdf').forEach(btn => {
-  tippy(btn, {
-    content: 'Ver PDF',
-    placement: 'bottom',
-  });
-});
+  <script>
+    'use strict';
+    document.querySelectorAll('.btn-pdf').forEach(btn => {
+      tippy(btn, {
+        content: 'Ver PDF',
+        placement: 'bottom',
+      });
+    });
 
-const nose = async(quotesID,ownerID) => { 
-  const req = await fetch(`./../vista/citas/controllerRequest.php?ownerID=${ownerID}&quotesID=${quotesID}`,{
-    method: 'PUT',
-    headers: {'Content-Type': 'application/json'},
-  });
+    const nose = async (quotesID, ownerID) => {
+      const req = await fetch(`./../vista/citas/controllerRequest.php?ownerID=${ownerID}&quotesID=${quotesID}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+      });
 
-  const res = await req.json();
+      const res = await req.json();
 
-  //create anchor for redirect to PDF
-  const a = document.createElement('a');
-  a.setAttribute('target', '_blank');
-  a.setAttribute('href', './../vista/citas/createPDF.php');
+      //create anchor for redirect to PDF
+      const a = document.createElement('a');
+      a.setAttribute('target', '_blank');
+      a.setAttribute('href', './../vista/citas/createPDF.php');
 
-  if(res.success) return a.click();
-};
+      if (res.success) return a.click();
+    };
 
-document.querySelectorAll('.checkbox-verify').forEach(checkbox => {
-  tippy(checkbox, {
-    content: 'Marcar como Atendido',
-    placement: 'left',
-  });
+    document.querySelectorAll('.checkbox-verify').forEach(checkbox => {
+      tippy(checkbox, {
+        content: 'Marcar como Atendido',
+        placement: 'left',
+      });
 
-  checkbox.addEventListener('change', async e => {
-    checkbox.checked = false;
-    Swal.fire({
-      title: "Escriba el diagnóstico",
-      input: "textarea",
-      inputAttributes: {
-        autocapitalize: "off"
-      },
-      showCancelButton: true,
-      showLoaderOnConfirm: true,
-      cancelButtonText: 'Cancelar',
-      confirmButtonText: "Actualizar",
-      preConfirm: async (diagnosis) => {
-        if (!diagnosis) Swal.showValidationMessage("Por favor, ingrese un diagnóstico válido");
-      },
-    }).then(async(result) => {
-      if (result.isConfirmed) {
-        const quotesID = e.target.value;
-        const req = await fetch(`./../vista/citas/controllerRequest.php?quotesID=${quotesID}`,{
-          method: 'PATCH',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({diagnosis: result.value}),
+      checkbox.addEventListener('change', async e => {
+        checkbox.checked = false;
+        Swal.fire({
+          title: "Escriba el diagnóstico",
+          input: "textarea",
+          inputAttributes: {
+            autocapitalize: "off"
+          },
+          showCancelButton: true,
+          showLoaderOnConfirm: true,
+          cancelButtonText: 'Cancelar',
+          confirmButtonText: "Actualizar",
+          preConfirm: async (diagnosis) => {
+            if (!diagnosis) Swal.showValidationMessage("Por favor, ingrese un diagnóstico válido");
+          },
+        }).then(async (result) => {
+          if (result.isConfirmed) {
+            const quotesID = e.target.value;
+            const req = await fetch(`./../vista/citas/controllerRequest.php?quotesID=${quotesID}`, {
+              method: 'PATCH',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ diagnosis: result.value }),
+            });
+            const res = await req.json();
+            if (res.success) Swal.fire('¡Actualizado exitosamente!', 'El diagnóstico se ha actualizado exitosamente', 'success').then(() => location.reload());
+          }
         });
-        const res = await req.json();
-        if(res.success) Swal.fire('¡Actualizado exitosamente!','El diagnóstico se ha actualizado exitosamente','success').then(() => location.reload());
-      }
-    });
-  }); 
-});
-
-document.querySelectorAll('.showDiagnosis').forEach(btnShowDiagnosis => {
-  btnShowDiagnosis.addEventListener('click',async e => {
-    const quotesID = e.target.value;
-    
-    const query = await fetch(`./../vista/citas/controllerRequest.php?quotesID=${quotesID}`,{
-      method: 'GET',
-      headers: {'content-type': 'application/json'},
+      });
     });
 
-    const res = await query.json();
-    const diagnosis = decodeURIComponent(escape(res.diagnosis));
-    Swal.fire({
-      title: 'Diagnóstico',
-      html: `<p style="font-size: 18px;text-indent:10px">${diagnosis}</p>`,
-      confirmButtonText: "Cerrar",
-    });
-  })
-})
+    document.querySelectorAll('.showDiagnosis').forEach(btnShowDiagnosis => {
+      btnShowDiagnosis.addEventListener('click', async e => {
+        const quotesID = e.target.value;
 
-const updateDiagnosis = async (quotesID) => {
+        const query = await fetch(`./../vista/citas/controllerRequest.php?quotesID=${quotesID}`, {
+          method: 'GET',
+          headers: { 'content-type': 'application/json' },
+        });
 
-const query = await fetch(`./../vista/citas/controllerRequest.php?quotesID=${quotesID}`,{
-  method: 'GET',
-  headers: {'content-type': 'application/json'},
-});
+        const res = await query.json();
+        const diagnosis = decodeURIComponent(escape(res.diagnosis));
+        Swal.fire({
+          title: 'Diagnóstico',
+          html: `<p style="font-size: 18px;text-indent:10px">${diagnosis}</p>`,
+          confirmButtonText: "Cerrar",
+        });
+      })
+    })
 
-const res = await query.json();
-const diagnosis = decodeURIComponent(escape(res.diagnosis));
+    const updateDiagnosis = async (quotesID) => {
 
-Swal.fire({
-  title: "Actualizar el diagnóstico",
-  input: "textarea",
-  inputValue: diagnosis,
-  inputAttributes: {
-    autocapitalize: "off"
-  },
-  showCancelButton: true,
-  showLoaderOnConfirm: true,
-  cancelButtonText: 'Cancelar',
-  confirmButtonText: "Actualizar",
-  preConfirm: async (diagnosis) => {
-    if (!diagnosis) Swal.showValidationMessage("Por favor, ingrese un diagnóstico válido");
-  },
-}).then(async(result) => {
-  if (result.isConfirmed) {
-    const req = await fetch(`/vetdog/vista/citas/controllerRequest.php?quotesID=${quotesID}`,{
-      method: 'PATCH',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({diagnosis: result.value}),
-    });
-    const res = await req.json();
-    if(res.success) Swal.fire('¡Actualizado exitosamente!','El diagnóstico se ha actualizado exitosamente','success').then(() => location.reload());
-  }
-});
-}
+      const query = await fetch(`./../vista/citas/controllerRequest.php?quotesID=${quotesID}`, {
+        method: 'GET',
+        headers: { 'content-type': 'application/json' },
+      });
 
-$(document).ready(function() {
-  $('.js-exportable').DataTable({
-  responsive: true,
-    "language": {
-        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+      const res = await query.json();
+      const diagnosis = decodeURIComponent(escape(res.diagnosis));
+
+      Swal.fire({
+        title: "Actualizar el diagnóstico",
+        input: "textarea",
+        inputValue: diagnosis,
+        inputAttributes: {
+          autocapitalize: "off"
+        },
+        showCancelButton: true,
+        showLoaderOnConfirm: true,
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: "Actualizar",
+        preConfirm: async (diagnosis) => {
+          if (!diagnosis) Swal.showValidationMessage("Por favor, ingrese un diagnóstico válido");
+        },
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          const req = await fetch(`/vetdog/vista/citas/controllerRequest.php?quotesID=${quotesID}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ diagnosis: result.value }),
+          });
+          const res = await req.json();
+          if (res.success) Swal.fire('¡Actualizado exitosamente!', 'El diagnóstico se ha actualizado exitosamente', 'success').then(() => location.reload());
+        }
+      });
     }
-  });
-});
 
-</script>
+    $(document).ready(function () {
+      $('.js-exportable').DataTable({
+        responsive: true,
+        "language": {
+          "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+        }
+      });
+    });
+
+  </script>
 </body>
+
 </html>

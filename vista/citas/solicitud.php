@@ -1,15 +1,18 @@
 ﻿<?php
 session_start();
-if (!isset($_SESSION['adminID'])) header('location: ../vista/login.php');
+if (!isset($_SESSION['adminID']))
+  header('location: ../vista/login.php');
 require_once './../../assets/db/connectionMysql.php';
 ?>
 <!DOCTYPE html>
 <html lang="es-ES">
+
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+    type="text/css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
   <!-- Bootstrap Core Css -->
   <link href="./../../assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -32,16 +35,17 @@ require_once './../../assets/db/connectionMysql.php';
   <title>Registrar Clientes Administrador | Beatriz Fagundez</title>
 </head>
 <style>
-input[type="checkbox"] {
+  input[type="checkbox"] {
     display: inline-block !important;
     opacity: 1 !important;
     visibility: visible !important;
     margin: 0 !important;
-    padding: 0 !important; 
-    float: none !important; 
+    padding: 0 !important;
+    float: none !important;
     position: static !important;
-}
+  }
 </style>
+
 <body class="theme-red">
   <!-- Page Loader -->
   <div class="page-loader-wrapper">
@@ -69,11 +73,12 @@ input[type="checkbox"] {
   <nav class="navbar">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+        <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse"
+          data-target="#navbar-collapse" aria-expanded="false"></a>
         <a href="javascript:void(0);" class="bars"></a>
         <a class="navbar-brand" href="./../../panel-admin/administrador"> CONSULTORIO - BEATRIZ FAGUNDEZ</a>
       </div>
-      </div>
+    </div>
     </div>
   </nav>
   <!-- #Top Bar -->
@@ -87,12 +92,17 @@ input[type="checkbox"] {
           <img src="./../../assets/img/mujerico.png" width="48" height="48" alt="User" />
         </div> -->
         <div class="info-container">
-          <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo ucfirst($_SESSION['name']); ?></div>
+          <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <?php echo ucfirst($_SESSION['name']); ?></div>
           <div class="btn-group user-helper-dropdown">
-            <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+            <i class="material-icons" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="true">keyboard_arrow_down</i>
             <ul class="dropdown-menu pull-right">
-              <li><a href="/vetdog/vista/pages-logout.php"><img src="./../../assets/icons/MaterialSymbolsLightExitToApp.svg" style="width: 25px"> Cerrar Sesión</a></li>
-              <li><a href="/vetdog/vista/panel-admin/edit-admin.php" style="display: flex;gap: 5px;"><img src="./../../assets/icons/IconParkSolidConfig.svg" style="width: 25px">Editar perfil</a></li>
+              <li><a href="/vetdog/vista/pages-logout.php"><img
+                    src="./../../assets/icons/MaterialSymbolsLightExitToApp.svg" style="width: 25px"> Cerrar Sesión</a>
+              </li>
+              <li><a href="/vetdog/vista/panel-admin/edit-admin.php" style="display: flex;gap: 5px;"><img
+                    src="./../../assets/icons/IconParkSolidConfig.svg" style="width: 25px">Editar perfil</a></li>
             </ul>
           </div>
         </div>
@@ -108,7 +118,7 @@ input[type="checkbox"] {
               <span>INICIO</span>
             </a>
           </li>
-          <!--======================================================================================================-->
+         
           <li>
             <a href="javascript:void(0);" class="menu-toggle">
               <i class="material-icons">inbox</i>
@@ -123,7 +133,7 @@ input[type="checkbox"] {
               </li>
             </ul>
           </li>
-          <!--======================================================================================================-->
+         
           <li>
             <a href="javascript:void(0);" class="menu-toggle">
               <i class="material-icons">low_priority</i>
@@ -153,7 +163,7 @@ input[type="checkbox"] {
               </li>
             </ul>
           </li>
-        
+
           <li>
             <a href="javascript:void(0);" class="menu-toggle">
               <i class="material-icons">person_pin</i>
@@ -168,7 +178,7 @@ input[type="checkbox"] {
               </li>
             </ul>
           </li>
-          <!--======================================================================================================-->
+         
           <li>
             <a href="javascript:void(0);" class="menu-toggle">
               <i class="material-icons">flutter_dash</i>
@@ -187,9 +197,18 @@ input[type="checkbox"] {
               <li>
                 <a href="../../folder/raza">Razas</a>
               </li>
+                            <li>
+                                <a href="../mascotas/animales_table.php">Mostrar Adopciones</a>
+                            </li>
+                            <li>
+                                <a href="../mascotas/animales_insert.php">Agregar Adopción</a>
+                            </li>
+                            <li>
+                                <a href="../mascotas/adopcion.php">Solicitudes</a>
+                            </li>
             </ul>
           </li>
-          <!--======================================================================================================-->
+         
           <li <li>>
             <a href="javascript:void(0);" class="menu-toggle">
               <i class="material-icons">calendar_today</i>
@@ -206,12 +225,13 @@ input[type="checkbox"] {
                 <a href="../../folder/servicio">Servicio</a>
               </li>
               <?php
-                  $sql = "SELECT * FROM quotes AS q WHERE q.vetID IS NULL ORDER BY q.dateCreation DESC";
-                  $results = mysqli_query($conn, $sql);
-                  $numberRequest = mysqli_num_rows($results);
+              $sql = "SELECT * FROM quotes AS q WHERE q.vetID IS NULL ORDER BY q.dateCreation DESC";
+              $results = mysqli_query($conn, $sql);
+              $numberRequest = mysqli_num_rows($results);
               ?>
               <li <li>>
-                <a href="./solicitud.php" style="display: flex;align-items:center;gap:5px">Solicitudes <span style="display: grid;place-items:center;margin: 0;color:#b00"><?= $numberRequest ?></span></a>
+                <a href="./solicitud.php" style="display: flex;align-items:center;gap:5px">Solicitudes <span
+                    style="display: grid;place-items:center;margin: 0;color:#b00"><?= $numberRequest ?></span></a>
               </li>
             </ul>
           </li>
@@ -227,7 +247,7 @@ input[type="checkbox"] {
               </li>
             </ul>
           </li>
-        
+
           <aside id="rightsidebar" class="right-sidebar"></aside>
       </div>
   </section>
@@ -255,26 +275,28 @@ input[type="checkbox"] {
                   </thead>
                   <tbody>
                     <?php
-                      $sql = "SELECT quotesID,dni_due,nom_due,ape_due,dateCreation FROM quotes AS q JOIN owner AS o WHERE q.ownerID = o.id_due AND q.vetID IS NULL ORDER BY q.dateCreation DESC";
+                    $sql = "SELECT quotesID,dni_due,nom_due,ape_due,dateCreation FROM quotes AS q JOIN owner AS o WHERE q.ownerID = o.id_due AND q.vetID IS NULL ORDER BY q.dateCreation DESC";
 
-                      $results = mysqli_query($conn,$sql);
-                      foreach ($results as $key => $row) { ?>
-                        <tr>
-                          <td class="text-center"><?= $key + 1 ?></td>
-                          <td class="text-center"><?= $row['dni_due'] ?></td>
-                          <td class="text-center"><?= $row['nom_due'] ?>&nbsp;<?= $row['ape_due'] ?></td>
-                          <td class="text-center"><?= date('d/m/Y',strtotime($row['dateCreation'])) ?></td>
-                          <td style="display: flex;justify-content: center;">
-                            <button onclick="attend('<?= $row['quotesID'] ?>')" class="btn bg-blue btn-circle waves-effect waves-circle waves-float btn-pdf" style="display: grid;place-items: center;">
-                              <img src="./../../assets/icons/TablerUserExclamation.svg" style="width: 100%;height: 100%"/>
-                            </button>
-                          </td> 
-                        </tr>
-                    <?php
+                    $results = mysqli_query($conn, $sql);
+                    foreach ($results as $key => $row) { ?>
+                      <tr>
+                        <td class="text-center"><?= $key + 1 ?></td>
+                        <td class="text-center"><?= $row['dni_due'] ?></td>
+                        <td class="text-center"><?= $row['nom_due'] ?>&nbsp;<?= $row['ape_due'] ?></td>
+                        <td class="text-center"><?= date('d/m/Y', strtotime($row['dateCreation'])) ?></td>
+                        <td style="display: flex;justify-content: center;">
+                          <button onclick="attend('<?= $row['quotesID'] ?>')"
+                            class="btn bg-blue btn-circle waves-effect waves-circle waves-float btn-pdf"
+                            style="display: grid;place-items: center;">
+                            <img src="./../../assets/icons/TablerUserExclamation.svg" style="width: 100%;height: 100%" />
+                          </button>
+                        </td>
+                      </tr>
+                      <?php
                     }
                     ?>
                   </tbody>
-                </table> 
+                </table>
               </div>
             </div>
           </div>
@@ -312,28 +334,29 @@ input[type="checkbox"] {
   <script src="./../../assets/js/demo.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script>
-'use strict';
-document.querySelectorAll('.btn-pdf').forEach(btn => {
-  tippy(btn, {
-    content: 'Atender',
-    placement: 'right',
-  });
-});
+  <script>
+    'use strict';
+    document.querySelectorAll('.btn-pdf').forEach(btn => {
+      tippy(btn, {
+        content: 'Atender',
+        placement: 'right',
+      });
+    });
 
-const attend = async quotesID => { 
-  return location.href = `./../citas/edit.php?quotesID=${quotesID}`;
-};
+    const attend = async quotesID => {
+      return location.href = `./../citas/edit.php?quotesID=${quotesID}`;
+    };
 
-$(document).ready(function() {
-  $('.js-exportable').DataTable({
-  responsive: true,
-      "language": {
+    $(document).ready(function () {
+      $('.js-exportable').DataTable({
+        responsive: true,
+        "language": {
           "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-      }
-  });
-});
+        }
+      });
+    });
 
-</script>
+  </script>
 </body>
+
 </html>
