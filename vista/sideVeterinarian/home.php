@@ -136,7 +136,7 @@ require_once './../../assets/db/connectionMysql.php';
           
         </section>
 
-      </article> -->
+      </article> 
     </div>
     <!-- #END# Input -->
     </div>
