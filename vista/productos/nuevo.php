@@ -12,16 +12,16 @@ if (!isset($_SESSION['adminID'])) header('location: ./../login.php');
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Google Font - Iconos -->
+ 
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
   <!-- Bootstrap Select Css -->
   <link href="../../assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
-  <!-- Bootstrap Core Css -->
+ 
   <link href="../../assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
-  <!-- Waves Effect Css -->
+ 
   <link href="../../assets/plugins/node-waves/waves.css" rel="stylesheet" />
-  <!-- Animation Css -->
+  
   <link href="../../assets/plugins/animate-css/animate.css" rel="stylesheet" />
   <link href="../../css/style.css" rel="stylesheet">
   <link href="../../assets/css/themes/all-themes.css" rel="stylesheet" />
@@ -32,7 +32,7 @@ if (!isset($_SESSION['adminID'])) header('location: ./../login.php');
   <title>Mostrar Productos Administrador | Beatriz Fagundez</title>
 </head>
 <body class="theme-red">
-  <!-- Page Loader -->
+ 
   <div class="page-loader-wrapper">
     <div class="loader">
       <div class="preloader">
@@ -48,13 +48,13 @@ if (!isset($_SESSION['adminID'])) header('location: ./../login.php');
       <p>Cargando...</p>
     </div>
   </div>
-  <!-- #END# Page Loader -->
+   
 
-  <!-- Overlay For Sidebars -->
+   
   <div class="overlay"></div>
-  <!-- #END# Overlay For Sidebars -->
+  
 
-  <!-- Top Bar -->
+  
   <nav class="navbar">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -66,16 +66,14 @@ if (!isset($_SESSION['adminID'])) header('location: ./../login.php');
       </div>
     </div>
   </nav>
-  <!-- #Top Bar -->
+ 
 
   <section>
-    <!-- Left Sidebar -->
+     
     <aside id="leftsidebar" class="sidebar">
-      <!-- User Info -->
+       
       <div class="user-info">
-        <!-- <div class="image">
-          <img src="../../assets/img/mujerico.png" width="48" height="48" alt="User" />
-        </div> -->
+ 
         <div class="info-container">
           <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo ucfirst($_SESSION['name']); ?></div>
           <div class="btn-group user-helper-dropdown">
@@ -89,7 +87,7 @@ if (!isset($_SESSION['adminID'])) header('location: ./../login.php');
       </div>
       <!-- #User Info -->
 
-      <!-- Menu -->
+       
       <article class="menu">
         <ul class="list">
           <li class="header">MENÚ DE NAVEGACIÓN</li>
@@ -285,7 +283,7 @@ if (!isset($_SESSION['adminID'])) header('location: ./../login.php');
       </article>
   </section>
 
-  <!--============================CONTENIDO DE LA PÁGINA ==========================================================-->
+   
 
   <section class="content">
     <div class="container-fluid">

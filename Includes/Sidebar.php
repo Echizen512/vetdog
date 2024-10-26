@@ -1,5 +1,5 @@
 <section>
-  <!-- Left Sidebar -->
+   
   <aside id="leftsidebar" class="sidebar">
     <!-- User Info -->
     <div class="user-info">
@@ -22,7 +22,7 @@
       </div>
     </div>
 
-    <!-- Menu -->
+     
     <div class="menu">
       <ul class="list">
         <li class="header">MENÚ DE NAVEGACIÓN</li>

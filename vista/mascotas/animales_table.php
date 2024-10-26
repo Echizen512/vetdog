@@ -4,17 +4,13 @@ if (!isset($_SESSION['adminID'])) {
     header('location: ../vista/login.php');
     exit();
 }
-
 require_once '../../assets/db/connectionMysql.php';
-
 // Consulta de animales
 $query = "SELECT id_animal, nombre, edad, tipo, condicion, imagen, estado FROM animales";
 $result = $conn->query($query);
-
 if (!$result) {
     die("Error en la consulta: " . $conn->error);
 }
-
 $animales = [];
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
@@ -24,44 +20,29 @@ if ($result->num_rows > 0) {
     echo "No se encontraron animales.";
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="es-ES">
 
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
         type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-    <!-- Bootstrap Core Css -->
     <link href="../../assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <!-- Waves Effect Css -->
     <link href="../../assets/plugins/node-waves/waves.css" rel="stylesheet" />
-    <!-- Animation Css -->
     <link href="../../assets/plugins/animate-css/animate.css" rel="stylesheet" />
-    <!-- JQuery DataTable Css -->
     <link href="../../assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
-    <!-- Custom Css -->
     <link href="../../css/style.css" rel="stylesheet">
-
     <link href="../../assets/css/themes/all-themes.css" rel="stylesheet" />
     <link rel="shortcut icon" type="image/x-icon" href="../../assets/img/lll.png" />
-    <!-- Popper  -->
     <script src="../../assets/js/popper.js"></script>
-    <!-- TippyJS -->
     <script src="../../assets/js/tippy-bundle.umd.js"></script>
     <title>Registrar Clientes Administrador | Beatriz Fagundez</title>
 </head>
 
-<body>
-
-    <!-- Overlay For Sidebars -->
+<body class="theme-red">
     <div class="overlay"></div>
-    <!-- #END# Overlay For Sidebars -->
-
-    <!-- Top Bar -->
     <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -72,19 +53,13 @@ if ($result->num_rows > 0) {
             </div>
         </div>
     </nav>
-    <!-- #Top Bar -->
-
     <section>
-        <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
-            <!-- User Info -->
             <div class="user-info">
-                <!-- <div class="image">
-          <img src="../../assets/img/mujerico.png" width="48" height="48" alt="User" />
-        </div> -->
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?php echo ucfirst($_SESSION['name']); ?></div>
+                        <?php echo ucfirst($_SESSION['name']); ?>
+                    </div>
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="true">keyboard_arrow_down</i>
@@ -99,8 +74,6 @@ if ($result->num_rows > 0) {
                     </div>
                 </div>
             </div>
-
-            <!-- Menu -->
             <div class="menu">
                 <ul class="list">
                     <li class="header">MENÚ DE NAVEGACIÓN</li>
@@ -110,7 +83,6 @@ if ($result->num_rows > 0) {
                             <span>INICIO</span>
                         </a>
                     </li>
-                   
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">inbox</i>
@@ -125,7 +97,6 @@ if ($result->num_rows > 0) {
                             </li>
                         </ul>
                     </li>
-                   
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">low_priority</i>
@@ -138,10 +109,8 @@ if ($result->num_rows > 0) {
                             <li>
                                 <a href="../../folder/categorias">Listar / Modificar</a>
                             </li>
-
                         </ul>
                     </li>
-                   
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">supervisor_account</i>
@@ -156,7 +125,6 @@ if ($result->num_rows > 0) {
                             </li>
                         </ul>
                     </li>
-
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">person_pin</i>
@@ -171,7 +139,6 @@ if ($result->num_rows > 0) {
                             </li>
                         </ul>
                     </li>
-                   
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">flutter_dash</i>
@@ -199,10 +166,8 @@ if ($result->num_rows > 0) {
                             <li>
                                 <a href="../mascotas/adopcion.php">Solicitudes</a>
                             </li>
-
                         </ul>
                     </li>
-                   
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">calendar_today</i>
@@ -230,7 +195,6 @@ if ($result->num_rows > 0) {
                             </li>
                         </ul>
                     </li>
-
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">assessment</i>
@@ -242,7 +206,6 @@ if ($result->num_rows > 0) {
                             </li>
                         </ul>
                     </li>
-
                     <aside id="rightsidebar" class="right-sidebar"></aside>
             </div>
     </section>
@@ -283,8 +246,8 @@ if ($result->num_rows > 0) {
                                                 <td class="text-center"><?= $animal['estado'] ?></td>
                                                 <td class="text-center">
                                                     <a href="animales_update.php?id=<?= $animal['id_animal'] ?>"
-                                                    class="btn bg-blue btn-circle waves-effect waves-circle waves-float btnEdit">
-                                                    <i class="material-icons">autorenew</i></a>
+                                                        class="btn bg-blue btn-circle waves-effect waves-circle waves-float btnEdit">
+                                                        <i class="material-icons">autorenew</i></a>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>

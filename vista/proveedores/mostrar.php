@@ -12,12 +12,12 @@ require_once '../assets/db/connectionMysql.php';
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>vetdog V.1 | vetdog - vetdog Admin Template</title>
-    <!-- Google Fonts -->
+     
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-    <!-- Bootstrap Core Css -->
+   
     <link href="../assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <!-- Waves Effect Css -->
+   
     <link href="../assets/plugins/node-waves/waves.css" rel="stylesheet" />
     <link href="../assets/plugins/animate-css/animate.css" rel="stylesheet" />
     <link href="../assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
@@ -40,13 +40,11 @@ require_once '../assets/db/connectionMysql.php';
   </nav>
 
   <section>
-         <!-- Left Sidebar -->
+          
          <aside id="leftsidebar" class="sidebar">
-      <!-- User Info -->
+       
       <div class="user-info">
-        <!-- <div class="image">
-          <img src="../../assets/img/mujerico.png" width="48" height="48" alt="User" />
-        </div> -->
+ 
         <div class="info-container">
           <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo ucfirst($_SESSION['name']); ?></div>
           <div class="btn-group user-helper-dropdown">

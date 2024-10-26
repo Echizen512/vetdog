@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>vetdog V.1 | vetdog - vetdog Admin Template</title>
-    <!-- Google Fonts -->
+     
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-    <!-- Bootstrap Core Css -->
+   
     <link href="../assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <!-- Waves Effect Css -->
+   
     <link href="../assets/plugins/node-waves/waves.css" rel="stylesheet" />
-    <!-- Animation Css -->
+    
     <link href="../assets/plugins/animate-css/animate.css" rel="stylesheet" />
-    <!-- JQuery DataTable Css -->
+   
     <link href="../assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
-    <!-- Custom Css -->
+    
     <link href="../css/style.css" rel="stylesheet">
     <!-- AdminBSB Themes -->
     <link href="../assets/css/themes/all-themes.css" rel="stylesheet" />
@@ -40,11 +40,11 @@
             <p>Cargando...</p>
         </div>
     </div>
-    <!-- #END# Page Loader -->
+     
 
-    <!-- Overlay For Sidebars -->
+     
     <div class="overlay"></div>
-    <!-- #END# Overlay For Sidebars -->
+    
 
     <!-- LUPA -->
     <div class="search-bar">
@@ -58,7 +58,7 @@
     </div>
     <!-- //LUPA -->
 
-    <!-- Top Bar -->
+    
     <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -76,4 +76,4 @@
             </div>
         </div>
     </nav>
-    <!-- #Top Bar -->
+   

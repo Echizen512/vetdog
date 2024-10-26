@@ -55,8 +55,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Registrar Clientes Administrador | Beatriz Fagundez</title>
 </head>
 
-<div class="overlay"></div>
+<body class="theme-red"></body>
 
+<div class="overlay"></div>
 
 <nav class="navbar">
     <div class="container-fluid">
@@ -71,16 +72,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 <section>
-    <!-- Left Sidebar -->
+
     <aside id="leftsidebar" class="sidebar">
-        <!-- User Info -->
+
         <div class="user-info">
-            <!-- <div class="image">
-          <img src="../../assets/img/mujerico.png" width="48" height="48" alt="User" />
-        </div> -->
+
             <div class="info-container">
                 <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <?php echo ucfirst($_SESSION['name']); ?></div>
+                    <?php echo ucfirst($_SESSION['name']); ?>
+                </div>
                 <div class="btn-group user-helper-dropdown">
                     <i class="material-icons" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="true">keyboard_arrow_down</i>
@@ -96,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
 
-        <!-- Menu -->
+
         <div class="menu">
             <ul class="list">
                 <li class="header">MENÚ DE NAVEGACIÓN</li>
@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <span>INICIO</span>
                     </a>
                 </li>
-               
+
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">inbox</i>
@@ -121,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </li>
                     </ul>
                 </li>
-               
+
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">low_priority</i>
@@ -137,7 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     </ul>
                 </li>
-               
+
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">supervisor_account</i>
@@ -167,7 +167,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </li>
                     </ul>
                 </li>
-               
+
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">flutter_dash</i>
@@ -196,7 +196,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </li>
             </ul>
             </li>
-           
+
             <li>
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="material-icons">calendar_today</i>

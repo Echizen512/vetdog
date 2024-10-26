@@ -14,14 +14,14 @@ require_once './../../utils/audit.php';
   <link href="../../assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
   <!-- Bootstrap DatePicker Css -->
   <link href="../../assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
-  <!-- Google Font - Iconos -->
+ 
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-  <!-- Bootstrap Core Css -->
+ 
   <link href="../../assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
-  <!-- Waves Effect Css -->
+ 
   <link href="../../assets/plugins/node-waves/waves.css" rel="stylesheet" />
-  <!-- Animation Css -->
+  
   <link href="../../assets/plugins/animate-css/animate.css" rel="stylesheet" />
   <link href="../../css/style.css" rel="stylesheet">
   <link href="../../assets/css/themes/all-themes.css" rel="stylesheet" />
@@ -33,7 +33,7 @@ require_once './../../utils/audit.php';
 
 </head>
 <body class="theme-red">
-  <!-- Page Loader -->
+ 
   <div class="page-loader-wrapper">
     <div class="loader">
       <div class="preloader">
@@ -49,13 +49,13 @@ require_once './../../utils/audit.php';
       <p>Cargando...</p>
     </div>
   </div>
-  <!-- #END# Page Loader -->
+   
 
-  <!-- Overlay For Sidebars -->
+   
   <div class="overlay"></div>
-  <!-- #END# Overlay For Sidebars -->
+  
 
-  <!-- Top Bar -->
+  
   <nav class="navbar">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -65,13 +65,13 @@ require_once './../../utils/audit.php';
       </div>
     </div>
   </nav>
-  <!-- #Top Bar -->
+ 
 
   <section>
-    <!-- Left Sidebar -->
+     
     <aside ownerID="leftsidebar" class="sidebar">
 
-    <!-- Menu -->
+     
     <article class="menu">
       <ul class="list">
         <li class="header">MENÚ DE NAVEGACIÓN</li>
@@ -121,7 +121,7 @@ require_once './../../utils/audit.php';
 
         <li>
           <a href="javascript:void(0);" class="menu-toggle">
-            <i class="material-icons">calendar_today</i>
+          <i class="material-icons">store</i>
             <span>Tienda</span>
           </a>
           <ul class="ml-menu">
@@ -130,6 +130,13 @@ require_once './../../utils/audit.php';
             </li>
           </ul>
         </li>
+
+        <li>
+          <a href="./Veterinarian.php">
+            <i class="material-icons">person</i>
+            <span>CHAT</span>
+          </a>
+        </li> 
 
         <li>
           <a href="./closeSession.php">
@@ -141,7 +148,7 @@ require_once './../../utils/audit.php';
         <aside ownerID="rightsidebar" class="right-sidebar"></aside>
     </article>
   </section>
-  <!--============================CONTENIDO DE LA PÁGINA ==========================================================-->
+   
   <section class="content">
     <div class="container-fluid">
       <!-- Input -->
@@ -272,31 +279,31 @@ require_once './../../utils/audit.php';
     </div>
   </section>
 
-  <!-- Jquery Core Js -->
+ 
   <script src="../../assets/plugins/jquery/jquery.min.js"></script>
-  <!-- Bootstrap Core Js -->
+ 
   <script src="../../assets/plugins/bootstrap/js/bootstrap.js"></script>
   <!-- Select Plugin Js -->
   <script src="../../assets/plugins/bootstrap-select/js/bootstrap-select.js"></script>
-  <!-- Slimscroll Plugin Js -->
+ 
   <script src="../../assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-  <!-- Waves Effect Plugin Js -->
+   
   <script src="../../assets/plugins/node-waves/waves.js"></script>
-  <!-- Autosize Plugin Js -->
+  
   <script src="../../assets/plugins/autosize/autosize.js"></script>
-  <!-- Moment Plugin Js -->
+  
   <script src="../../assets/plugins/momentjs/moment.js"></script>
   <script src="../../assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
   <!-- Bootstrap Datepicker Plugin Js -->
   <script src="../../assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-  <!-- Custom Js -->
+  
   <script src="../../assets/js/admin.js"></script>
   <script src="../../assets/js/pages/forms/basic-form-elements.js"></script>
-  <!-- Demo Js -->
+  
 
   <script src="../../assets/js/demo.js"></script>
   
-  <!-- Demo Js -->
+  
   <script src="../assets/js/demo.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
   <!--------------------------------script nuevo----------------------------->
