@@ -348,34 +348,38 @@ if ($result->num_rows > 0) {
 
 
   <script>
-    $(document).ready(function () {
-      $('#solicitudesTable').DataTable(); // Inicializa DataTables
-    });
+$(document).ready(function () {
+  $('#solicitudesTable').DataTable(); // Inicializa DataTables
+});
 
-    function cambiarEstado(solicitudID, nuevoEstado) {
-      if (confirm(`¿Deseas cambiar el estado a ${nuevoEstado}?`)) {
-        $.ajax({
-          type: 'POST',
-          url: '', // La misma página
-          data: {
-            solicitudID: solicitudID,
-            nuevoEstado: nuevoEstado
-          },
-          success: function (response) {
-            if (response === 'success') {
-              alert(`El estado ha sido cambiado a ${nuevoEstado}.`);
-              location.reload(); // Recargar la página para ver los cambios
-            } else {
-              alert('Hubo un problema al actualizar el estado.');
-            }
-          },
-          error: function () {
-            alert('No se pudo conectar al servidor.');
-          }
-        });
+function cambiarEstado(solicitudID, nuevoEstado) {
+  if (confirm(`¿Deseas cambiar el estado a ${nuevoEstado}?`)) {
+    $.ajax({
+      type: 'POST',
+      url: 'update_solicitud.php', // Cambia esta línea con la ruta correcta
+      data: {
+        solicitudID: solicitudID,
+        nuevoEstado: nuevoEstado
+      },
+      success: function (response) {
+        if (response.startsWith('success')) {
+          alert(`El estado ha sido cambiado a ${nuevoEstado}.`);
+          location.reload(); // Recargar para reflejar cambios
+        } else {
+          alert('Hubo un problema: ' + response);
+        }
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        alert('No se pudo conectar al servidor. ' + textStatus + ': ' + errorThrown);
       }
-    }
-  </script>
+    });
+  }
+}
+</script>
+
+
+
+
 </body>
 
 </html>
