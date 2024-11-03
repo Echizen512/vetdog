@@ -105,7 +105,8 @@ if ($result->num_rows > 0) {
 
         <div class="info-container">
           <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <?php echo ucfirst($_SESSION['name']); ?></div>
+            <?php echo ucfirst($_SESSION['name']); ?>
+          </div>
           <div class="btn-group user-helper-dropdown">
             <i class="material-icons" data-toggle="dropdown" aria-haspopup="true"
               aria-expanded="true">keyboard_arrow_down</i>
@@ -305,15 +306,16 @@ if ($result->num_rows > 0) {
                         </td>
                         <td class="text-center">
                           <?php if ($estado == 'pendiente'): ?>
-                            <button class="btn btn-success btn-sm"
+                            <button class="btn btn-success"
                               onclick="cambiarEstado(<?php echo $solicitud['id_solicitud']; ?>, 'aceptada')">
-                              <i class="fas fa-check"></i>
+                              <i class="fas fa-check mr-2"></i> Aceptar
                             </button>
-                            <button class="btn btn-danger btn-sm"
+                            <button class="btn btn-danger"
                               onclick="cambiarEstado(<?php echo $solicitud['id_solicitud']; ?>, 'rechazada')">
-                              <i class="fas fa-times"></i>
+                              <i class="fas fa-times mr-2"></i> Rechazar
                             </button>
                           <?php endif; ?>
+
                         </td>
                       </tr>
                     <?php endforeach; ?>
