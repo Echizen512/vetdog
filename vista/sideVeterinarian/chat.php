@@ -67,7 +67,7 @@ include "./head.php";
     <div class="wrapper">
         <section class="chat-area">
             <header>
-                <a href="users.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
+                <a href="Veterinarian.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
                 <div class="details">
                     <span><?php echo ($user_type == 'owner') ? $row['nomvet'] . " " . $row['apevet'] : $row['nom_due'] . " " . $row['ape_due']; ?></span>
                     <p><?php echo ($user_type == 'owner') ? "Veterinario" : "Dueño"; ?></p>
