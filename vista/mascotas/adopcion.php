@@ -39,10 +39,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Consulta de solicitudes
 $query = "
-    SELECT s.id_solicitud, d.nom_due AS nombre_due, a.nombre, s.estado 
-    FROM solicitudes s
-    JOIN owner d ON s.id_due = d.id_due
-    JOIN animales a ON s.id_animal = a.id_animal
+SELECT s.id_solicitud, d.nom_due AS nombre_due, a.nombre, s.estado, a.id_animal, s.id_due
+FROM solicitudes s
+JOIN owner d ON s.id_due = d.id_due
+JOIN animales a ON s.id_animal = a.id_animal
+
+
 ";
 
 $result = $conn->query($query);
@@ -284,6 +286,7 @@ if ($result->num_rows > 0) {
                       <th class="text-center">Nombre del Animal</th>
                       <th class="text-center">Estado</th>
                       <th class="text-center">Acciones</th>
+                      <th class="text-center">PDF</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -317,6 +320,23 @@ if ($result->num_rows > 0) {
                           <?php endif; ?>
 
                         </td>
+                        <td class="text-center">
+  <?php if (strtolower($solicitud['estado']) == 'aceptada'): ?>
+    <?php if (isset($solicitud['id_due'])): ?>
+      <a href="certificado.php?id_due=<?php echo $solicitud['id_due']; ?>&id_animal=<?php echo $solicitud['id_animal']; ?>" 
+         class="btn btn-success" target="_blank">
+        <i class="fas fa-file-pdf"></i> Generar Certificado
+      </a>
+    <?php else: ?>
+      <button class="btn btn-warning" disabled>Datos incompletos</button>
+    <?php endif; ?>
+  <?php else: ?>
+    <button class="btn btn-secondary" disabled data-toggle="tooltip" title="La solicitud debe estar aceptada para generar un certificado.">
+      <i class="fas fa-file-pdf"></i> Generar Certificado
+    </button>
+  <?php endif; ?>
+</td>
+
                       </tr>
                     <?php endforeach; ?>
                   </tbody>
@@ -348,34 +368,35 @@ if ($result->num_rows > 0) {
 
 
   <script>
-$(document).ready(function () {
-  $('#solicitudesTable').DataTable(); // Inicializa DataTables
-});
-
-function cambiarEstado(solicitudID, nuevoEstado) {
-  if (confirm(`¿Deseas cambiar el estado a ${nuevoEstado}?`)) {
-    $.ajax({
-      type: 'POST',
-      url: 'update_solicitud.php', // Cambia esta línea con la ruta correcta
-      data: {
-        solicitudID: solicitudID,
-        nuevoEstado: nuevoEstado
-      },
-      success: function (response) {
-        if (response.startsWith('success')) {
-          alert(`El estado ha sido cambiado a ${nuevoEstado}.`);
-          location.reload(); // Recargar para reflejar cambios
-        } else {
-          alert('Hubo un problema: ' + response);
-        }
-      },
-      error: function (jqXHR, textStatus, errorThrown) {
-        alert('No se pudo conectar al servidor. ' + textStatus + ': ' + errorThrown);
-      }
+    $(document).ready(function () {
+      $('#solicitudesTable').DataTable(); // Inicializa DataTables
     });
-  }
-}
-</script>
+
+    function cambiarEstado(solicitudID, nuevoEstado) {
+      if (confirm(`¿Deseas cambiar el estado a ${nuevoEstado}?`)) {
+        $.ajax({
+          type: 'POST',
+          url: 'update_solicitud.php', // Cambia esta línea con la ruta correcta
+          data: {
+            solicitudID: solicitudID,
+            nuevoEstado: nuevoEstado
+          },
+          success: function (response) {
+            if (response.startsWith('success')) {
+              alert(`El estado ha sido cambiado a ${nuevoEstado}.`);
+              location.reload(); // Recargar para reflejar cambios
+            } else {
+              alert('Hubo un problema: ' + response);
+            }
+          },
+          error: function (jqXHR, textStatus, errorThrown) {
+            alert('No se pudo conectar al servidor. ' + textStatus + ': ' + errorThrown);
+          }
+        });
+      }
+    }
+
+  </script>
 
 
 
