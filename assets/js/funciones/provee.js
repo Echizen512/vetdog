@@ -1,7 +1,7 @@
 $(function(){
 
 	// Lista de docente
-	$.post( '../../vista/funciones/provee.php' ).done( function(respuesta)
+	$.post( '../../View/funciones/provee.php' ).done( function(respuesta)
 	{
 		$( '#provee' ).html( respuesta );
 	});

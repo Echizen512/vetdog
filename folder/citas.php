@@ -1,5 +1,5 @@
 <?php
-require_once '../controlador/quotescontrolador.php';
+require_once '../Controller/quotescontrolador.php';
 $objquotes=new quotescontrolador();
 $op="mostrar";
 if(isset($_REQUEST['op']))

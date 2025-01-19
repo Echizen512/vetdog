@@ -1,5 +1,5 @@
 <?php
-require_once '../controlador/veterinariancontrolador.php';
+require_once '../Controller/veterinariancontrolador.php';
 $objvete=new veterinariancontrolador();
 $op="mostrar";
 if(isset($_REQUEST['op']))

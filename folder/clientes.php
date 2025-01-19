@@ -1,5 +1,5 @@
 <?php
-require_once '../controlador/ownercontrolador.php';
+require_once '../Controller/ownercontrolador.php';
 $objowner=new ownercontrolador();
 $op="mostrar";
 if(isset($_REQUEST['op']))

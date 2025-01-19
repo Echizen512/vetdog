@@ -1,5 +1,5 @@
 <?php
-require_once '../controlador/categorycontrolador.php';
+require_once '../Controller/categorycontrolador.php';
 $objcate=new categorycontrolador();
 $op="mostrar";
 if(isset($_REQUEST['op']))

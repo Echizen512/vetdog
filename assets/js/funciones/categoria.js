@@ -1,7 +1,7 @@
 $(function(){
 
 	// Lista de docente
-	$.post( '../../vista/funciones/categoria.php' ).done( function(respuesta)
+	$.post( '../../View/funciones/categoria.php' ).done( function(respuesta)
 	{
 		$( '#categoria' ).html( respuesta );
 	});

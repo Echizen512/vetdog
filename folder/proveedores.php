@@ -1,5 +1,5 @@
 <?php
-require_once '../controlador/suppliercontrolador.php';
+require_once '../Controller/suppliercontrolador.php';
 $objsupplier=new suppliercontrolador();
 $op="mostrar";
 if(isset($_REQUEST['op']))

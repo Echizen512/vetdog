@@ -1,5 +1,5 @@
 <?php
-require_once '../controlador/servicecontrolador.php';
+require_once '../Controller/servicecontrolador.php';
 $objservice=new servicecontrolador();
 $op="mostrar";
 if(isset($_REQUEST['op']))

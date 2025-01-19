@@ -1,5 +1,5 @@
 <?php
-require_once '../controlador/productscontrolador.php';
+require_once '../Controller/productscontrolador.php';
 $objprodu = new productscontrolador();
 $op = "mostrar";
 if (isset($_REQUEST['op']))

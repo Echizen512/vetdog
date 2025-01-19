@@ -1,5 +1,5 @@
 <?php
-require_once '../controlador/pet_typecontrolador.php';
+require_once '../Controller/pet_typecontrolador.php';
 $objtipo=new pet_typecontrolador();
 $op="mostrar";
 if(isset($_REQUEST['op']))

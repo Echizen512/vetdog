@@ -1,5 +1,5 @@
 <?php
-require_once '../controlador/ventacontrolador.php';
+require_once '../Controller/ventacontrolador.php';
 $objventa=new ventacontrolador();
 $op="mostrar";
 if(isset($_REQUEST['op']))

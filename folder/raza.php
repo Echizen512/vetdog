@@ -1,5 +1,5 @@
 <?php
-require_once '../controlador/razacontrolador.php';
+require_once '../Controller/razacontrolador.php';
 $objraza=new razacontrolador();
 $op="mostrar";
 if(isset($_REQUEST['op']))

@@ -1,5 +1,5 @@
 <?php
-require_once '../controlador/compracontrolador.php';
+require_once '../Controller/compracontrolador.php';
 $objcompra=new compracontrolador();
 $op="mostrar";
 if(isset($_REQUEST['op']))

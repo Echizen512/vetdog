@@ -15,7 +15,7 @@
           <ul class="dropdown-menu pull-right">
             <li><a href="../pages-logout"><img src="../assets/icons/MaterialSymbolsLightExitToApp.svg"
                   style="width: 25px"> Cerrar Sesión</a></li>
-            <li><a href="/vetdog/vista/panel-admin/edit-admin.php" style="display: flex;gap: 5px;"><img
+            <li><a href="/vetdog/View/panel-admin/edit-admin.php" style="display: flex;gap: 5px;"><img
                   src="./../assets/icons/IconParkSolidConfig.svg" style="width: 25px">Editar perfil</a></li>
           </ul>
         </div>
@@ -27,7 +27,7 @@
       <ul class="list">
         <li class="header">MENÚ DE NAVEGACIÓN</li>
         <li>
-          <a href="../vista/panel-admin/administrador">
+          <a href="../View/panel-admin/administrador">
             <i class="material-icons">home</i>
             <span>INICIO</span>
           </a>
@@ -40,7 +40,7 @@
           </a>
           <ul class="ml-menu">
             <li>
-              <a href="../vista/productos/nuevo">Registrar</a>
+              <a href="../View/productos/nuevo">Registrar</a>
             </li>
             <li>
               <a href="../folder/productos">Listar / Modificar</a>
@@ -55,7 +55,7 @@
           </a>
           <ul class="ml-menu">
             <li>
-              <a href="../vista/categorias/nuevo">Registrar</a>
+              <a href="../View/categorias/nuevo">Registrar</a>
             </li>
             <li>
               <a href="../folder/categorias">Listar / Modificar</a>
@@ -70,7 +70,7 @@
           </a>
           <ul class="ml-menu">
             <li>
-              <a href="../vista/clientes/nuevo">Registrar</a>
+              <a href="../View/clientes/nuevo">Registrar</a>
             </li>
             <li>
               <a href="../folder/clientes">Listar / Modificar</a>
@@ -85,7 +85,7 @@
           </a>
           <ul class="ml-menu">
             <li>
-              <a href="../vista/veterinarios/nuevo">Registrar</a>
+              <a href="../View/veterinarios/nuevo">Registrar</a>
             </li>
             <li>
               <a href="../folder/veterinarios">Listar / Modificar</a>
@@ -100,7 +100,7 @@
           </a>
           <ul class="ml-menu">
             <li>
-              <a href="../vista/proveedores/nuevo">Registrar</a>
+              <a href="../View/proveedores/nuevo">Registrar</a>
             </li>
             <li>
               <a href="../folder/proveedores">Listar / Modificar</a>
@@ -115,13 +115,13 @@
           </a>
           <ul class="ml-menu">
             <li>
-              <a href="../vista/compra/nuevo">Registrar</a>
+              <a href="../View/compra/nuevo">Registrar</a>
             </li>
             <li>
               <a href="../folder/compra">Listar / Modificar</a>
             </li>
             <li>
-              <a href="../vista/compra/compras_fecha">Consultar por fecha</a>
+              <a href="../View/compra/compras_fecha">Consultar por fecha</a>
             </li>
 
           </ul>
@@ -134,13 +134,13 @@
           </a>
           <ul class="ml-menu">
             <li>
-              <a href="../vista/venta/nuevo">Registrar</a>
+              <a href="../View/venta/nuevo">Registrar</a>
             </li>
             <li>
               <a href="../folder/venta">Listar / Modificar</a>
             </li>
             <li>
-              <a href="../vista/venta/venta_fecha">Consultar por fecha</a>
+              <a href="../View/venta/venta_fecha">Consultar por fecha</a>
             </li>
           </ul>
         </li>
@@ -153,7 +153,7 @@
           </a>
           <ul class="ml-menu">
             <li>
-              <a href="../vista/mascotas/nuevo">Registrar</a>
+              <a href="../View/mascotas/nuevo">Registrar</a>
             </li>
             <li>
               <a href="../folder/mascotas">Listar / Modificar</a>
@@ -165,13 +165,13 @@
               <a href="../folder/raza">Razas</a>
             </li>
             <li>
-              <a href="../vista/mascotas/animales_table.php">Mostrar Adopciones</a>
+              <a href="../View/mascotas/animales_table.php">Mostrar Adopciones</a>
             </li>
             <li>
-              <a href="../vista/mascotas/animales_insert.php">Agregar Adopción</a>
+              <a href="../View/mascotas/animales_insert.php">Agregar Adopción</a>
             </li>
             <li>
-              <a href="../vista/mascotas/adopcion.php">Solicitudes</a>
+              <a href="../View/mascotas/adopcion.php">Solicitudes</a>
             </li>
           </ul>
         </li>
@@ -183,7 +183,7 @@
           </a>
           <ul class="ml-menu">
             <li>
-              <a href="../vista/citas/nuevo">Registrar</a>
+              <a href="../View/citas/nuevo">Registrar</a>
             </li>
             <li>
               <a href="../folder/citas">Listar / Modificar</a>
@@ -197,7 +197,7 @@
               $results = mysqli_query($conn, $sql);
               $numberRequest = mysqli_num_rows($results);
               ?>
-              <a href="../vista/citas/solicitud.php" style="display: flex;align-items:center;gap:5px">Solicitudes <span
+              <a href="../View/citas/solicitud.php" style="display: flex;align-items:center;gap:5px">Solicitudes <span
                   style="display: grid;place-items:center;margin: 0;color:#b00"><?= $numberRequest ?></span></a>
             </li>
           </ul>
@@ -210,7 +210,7 @@
           </a>
           <ul class="ml-menu">
             <li>
-              <a href="../vista/audit/mostrar.php">Mostrar</a>
+              <a href="../View/audit/mostrar.php">Mostrar</a>
             </li>
           </ul>
         </li>

@@ -1,5 +1,5 @@
 <?php
-require_once '../controlador/petcontrolador.php';
+require_once '../Controller/petcontrolador.php';
 $objpet=new petcontrolador();
 $op="mostrar";
 if(isset($_REQUEST['op']))
