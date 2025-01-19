@@ -303,7 +303,7 @@ require_once './../../assets/db/connectionMysql.php';
       </article>
   </section>
   
-  <!--=============================================================CONTENIDO DE LA PÁGINA =============================================================-->
+ 
   <section class="content">
     
     <form id="form">

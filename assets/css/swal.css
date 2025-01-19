@@ -1,0 +1,32 @@
+.swal2-popup {
+    width: 500px;
+    height: 330px;
+
+}
+
+.swal2-title {
+    font-size: 28px;
+
+}
+
+#swal2-html-container {
+    font-size: 20px;
+
+}
+
+.swal2-confirm,
+.swal2-cancel {
+    font-size: 18px !important;
+    padding: 10px 18px !important;
+
+}
+
+.swal2-icon {
+    font-size: 12px;
+
+}
+
+.swal2-select {
+    display: none !important;
+    opacity: 0 !important;
+}

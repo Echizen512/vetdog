@@ -49,21 +49,7 @@ require_once './../assets/db/connectionMysql.php';
 
 <body class="theme-red">
  
-  <div class="page-loader-wrapper">
-    <div class="loader">
-      <div class="preloader">
-        <div class="spinner-layer pl-red">
-          <div class="circle-clipper left">
-            <div class="circle"></div>
-          </div>
-          <div class="circle-clipper right">
-            <div class="circle"></div>
-          </div>
-        </div>
-      </div>
-      <p>Cargando...</p>
-    </div>
-  </div>
+<?php include('./../Includes/Loader.php'); ?>
    
 
    
@@ -71,185 +57,11 @@ require_once './../assets/db/connectionMysql.php';
   
 
   
-  <nav class="navbar">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse"
-          data-target="#navbar-collapse" aria-expanded="false"></a>
-        <a href="javascript:void(0);" class="bars"></a>
-        <a class="navbar-brand" href="../panel-admin/administrador">CONSULTORIO - BEATRIZ FAGUNDEZ </a>
-      </div>
-    </div>
-  </nav>
+  <?php include('./../Includes/Nav.php'); ?>
  
 
-  <section>
-     
-    <aside id="leftsidebar" class="sidebar">
-       
-      <div class="user-info">
+  <?php include '../Includes/Sidebar.php'; ?>
  
-        <div class="info-container">
-          <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <?php echo ucfirst($_SESSION['name']); ?></div>
-          <div class="btn-group user-helper-dropdown">
-            <i class="material-icons" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="true">keyboard_arrow_down</i>
-            <ul class="dropdown-menu pull-right">
-              <li><a href=" ./../pages-logout"><img src="./../../assets/icons/MaterialSymbolsLightExitToApp.svg"
-                    style="width: 25px"> Cerrar Sesión</a></li>
-              <li><a href="/vetdog/vista/panel-admin/edit-admin.php" style="display: flex;gap: 5px;"><img
-                    src="./../../assets/icons/IconParkSolidConfig.svg" style="width: 25px">Editar perfil</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-       
-      <div class="menu">
-        <ul class="list">
-          <li class="header">MENÚ DE NAVEGACIÓN</li>
-          <li>
-            <a href="../panel-admin/administrador">
-              <i class="material-icons">home</i>
-              <span>INICIO</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="javascript:void(0);" class="menu-toggle">
-              <i class="material-icons">inbox</i>
-              <span>PRODUCTOS</span>
-            </a>
-            <ul class="ml-menu">
-              <li>
-                <a href="../productos/nuevo">Registrar</a>
-              </li>
-              <li>
-                <a href="../../folder/productos">Listar / Modificar</a>
-              </li>
-            </ul>
-          </li>
-
-          <li>
-            <a href="javascript:void(0);" class="menu-toggle">
-              <i class="material-icons">low_priority</i>
-              <span>CATEGORÍAS</span>
-            </a>
-            <ul class="ml-menu">
-              <li>
-                <a href="../categorias/nuevo">Registrar</a>
-              </li>
-              <li>
-                <a href="../../folder/categorias">Listar / Modificar</a>
-              </li>
-
-            </ul>
-          </li>
-
-          <li>
-            <a href="javascript:void(0);" class="menu-toggle">
-              <i class="material-icons">supervisor_account</i>
-              <span>CLIENTES</span>
-            </a>
-            <ul class="ml-menu">
-              <li>
-                <a href="../clientes/nuevo">Registrar</a>
-              </li>
-              <li>
-                <a href="../../folder/clientes">Listar / Modificar</a>
-              </li>
-            </ul>
-          </li>
-
-          <li>
-            <a href="javascript:void(0);" class="menu-toggle">
-              <i class="material-icons">person_pin</i>
-              <span>VETERINARIOS</span>
-            </a>
-            <ul class="ml-menu">
-              <li>
-                <a href="../veterinarios/nuevo">Registrar</a>
-              </li>
-              <li>
-                <a href="../../folder/veterinarios">Listar / Modificar</a>
-              </li>
-            </ul>
-          </li>
-
-          <li>
-            <a href="javascript:void(0);" class="menu-toggle">
-              <i class="material-icons">flutter_dash</i>
-              <span>MASCOTAS</span>
-            </a>
-            <ul class="ml-menu">
-              <li>
-                <a href="../mascotas/nuevo">Registrar</a>
-              </li>
-              <li>
-                <a href="../../folder/mascotas">Listar / Modificar</a>
-              </li>
-              <li>
-                <a href="../../folder/tipo">Tipos</a>
-              </li>
-              <li>
-                <a href="../../folder/raza">Razas</a>
-              </li>
-              <li>
-                <a href="../vista/mascotas/animales_table.php">Mostrar Adopciones</a>
-              </li>
-              <li>
-                <a href="../vista/mascotas/animales_insert.php">Agregar Adopción</a>
-              </li>
-              <li>
-                <a href="../vista/mascotas/adopcion.php">Solicitudes</a>
-              </li>
-            </ul>
-          </li>
-
-          <li>
-            <a href="javascript:void(0);" class="menu-toggle">
-              <i class="material-icons">calendar_today</i>
-              <span>CITAS</span>
-            </a>
-            <ul class="ml-menu">
-              <li>
-                <a href="../citas/nuevo">Registrar</a>
-              </li>
-              <li>
-                <a href="../../folder/citas">Listar / Modificar</a>
-              </li>
-              <li>
-                <a href="../../folder/servicio">Servicio</a>
-              </li>
-              <li>
-                <?php
-                $sql = "SELECT * FROM quotes AS q WHERE q.vetID IS NULL ORDER BY q.dateCreation DESC";
-                $results = mysqli_query($conn, $sql);
-                $numberRequest = mysqli_num_rows($results);
-                ?>
-                <a href="./../citas/solicitud.php" style="display: flex;align-items:center;gap:5px">Solicitudes <span
-                    style="display: grid;place-items:center;margin: 0;color:#b00"><?= $numberRequest ?></span></a>
-              </li>
-            </ul>
-          </li>
-
-          <li>
-            <a href="javascript:void(0);" class="menu-toggle">
-              <i class="material-icons">assessment</i>
-              <span>BITÁCORA</span>
-            </a>
-            <ul class="ml-menu">
-              <li>
-                <a href="./../audit/mostrar.php">Mostrar</a>
-              </li>
-            </ul>
-          </li>
-
-          <aside id="rightsidebar" class="right-sidebar"></aside>
-      </div>
-  </section>
-  <!--=============================================================CONTENIDO DE LA PÁGINA =============================================================-->
   <section class="content">
     <div class="container-fluid">
       <div class="row clearfix">
@@ -319,40 +131,11 @@ require_once './../assets/db/connectionMysql.php';
           </div>
         </div>
       </div>
-      <!-- #END# Exportable Table -->
+      
     </div>
   </section>
 
- 
-  <script src="../assets/plugins/jquery/jquery.min.js"></script>
- 
-  <script src="../assets/plugins/bootstrap/js/bootstrap.js"></script>
-  <!-- Select Plugin Js -->
-  <script src="../assets/plugins/bootstrap-select/js/bootstrap-select.js"></script>
- 
-  <script src="../assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-   
-  <script src="../assets/plugins/node-waves/waves.js"></script>
-
-  <!-- Jquery DataTable Plugin Js -->
-  <script src="../assets/plugins/jquery-datatable/jquery.dataTables.js"></script>
-  <script src="../assets/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
-  <script src="../assets/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
-  <script src="../assets/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
-  <script src="../plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
-  <script src="../assets/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
-  <script src="../assets/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
-  <script src="../assets/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
-  <script src="../assets/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
-
-  
-  <script src="../assets/js/admin.js"></script>
-  <!-- <script src="../assets/js/pages/tables/jquery-datatable.js"></script> -->
-
-  
-  <script src="../assets/js/demo.js"></script>
-  <!-- sweetalert2 -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <?php include('./../Includes/Footer.php'); ?>
   <script>
     'use strict';
 

@@ -116,7 +116,7 @@ require_once '../../assets/db/connectionMysql.php';
                             <span>INICIO</span>
                         </a>
                     </li>
-<!--======================================================================================================-->
+
                    <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">inbox</i>
@@ -131,7 +131,7 @@ require_once '../../assets/db/connectionMysql.php';
                             </li>
                         </ul>
                     </li>
-<!--======================================================================================================-->
+
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">low_priority</i>
@@ -147,7 +147,7 @@ require_once '../../assets/db/connectionMysql.php';
                             
                         </ul>
                     </li>
-<!--======================================================================================================-->
+
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">supervisor_account</i>
@@ -162,7 +162,7 @@ require_once '../../assets/db/connectionMysql.php';
                             </li>
                         </ul>
                     </li>
-<!--======================================================================================================-->
+
                      <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">business</i>
@@ -177,7 +177,7 @@ require_once '../../assets/db/connectionMysql.php';
                             </li>
                         </ul>
                     </li>
-<!--======================================================================================================-->
+
                    <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">person_pin</i>
@@ -192,7 +192,7 @@ require_once '../../assets/db/connectionMysql.php';
                             </li>
                         </ul>
                     </li>
-<!--======================================================================================================-->
+
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">flutter_dash</i>
@@ -220,7 +220,7 @@ require_once '../../assets/db/connectionMysql.php';
 
                         </ul>
 </li>
-<!--======================================================================================================-->
+
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">calendar_today</i>
@@ -256,7 +256,7 @@ require_once '../../assets/db/connectionMysql.php';
                             </li>
                         </ul>
     </li>
-<!--======================================================================================================-->
+
 <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">monetization_on</i>
@@ -283,7 +283,7 @@ require_once '../../assets/db/connectionMysql.php';
 
 
 
-<!--=============================================================CONTENIDO DE LA PÁGINA =============================================================-->
+
     <section class="content">
         <div class="container-fluid">
             <div class="row clearfix">
@@ -467,7 +467,7 @@ if($query){
 
 
             </div>
-            <!-- #END# Exportable Table -->
+            
         </div>
 
         <a type="button" href="../../folder/compra" class="btn bg-blue"><i class="material-icons">arrow_back</i> Regresar atrás </a>

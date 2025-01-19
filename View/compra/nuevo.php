@@ -371,7 +371,7 @@ while($r=$products->fetch_object()):?>
     </form> 
     <?php endif; ?>
     </td> 
-    <td class="text-center">$/. <?php echo $r->preciC; ?></td>              
+    <td class="text-center">$ <?php echo $r->preciC; ?></td>              
                         
                 </tr>
 <?php endwhile; ?>
@@ -384,7 +384,7 @@ while($r=$products->fetch_object()):?>
                     </div>
                 </div>
             </div>
-            <!-- #END# Exportable Table -->
+            
         </div>
     </section>
 
@@ -429,7 +429,7 @@ while($r=$products->fetch_object()):?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     
 
-    <!--------------------------------script nuevo----------------------------->
+    
 
   
 </body>

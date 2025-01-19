@@ -330,7 +330,7 @@ require_once './../../../assets/db/connectionMysql.php';
       document.getElementById("id_raza").innerHTML = res;
     };
   </script>
-  <!--------------------------------script nuevo----------------------------->
+  
   <?php
   if (isset($_POST["add"])) {
     if(!empty($_POST['nomas']) && !empty($_POST['id_tiM']) && !empty($_POST['id_raza']) && !empty($_POST['sexo']) && !empty($_POST['edad']) && !empty($_POST['age']) && !empty($_POST['tamano']) && !empty($_POST['peso']) && $_SESSION['ownerID'] && !empty($_POST['weightID']) ) {

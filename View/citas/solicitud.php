@@ -302,7 +302,7 @@ require_once './../../assets/db/connectionMysql.php';
           </div>
         </div>
       </div>
-      <!-- #END# Exportable Table -->
+      
     </div>
   </section>
 

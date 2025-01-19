@@ -1,14 +1,11 @@
 <section>
-   
+
   <aside id="leftsidebar" class="sidebar">
-    <!-- User Info -->
     <div class="user-info">
-      <!-- <div class="image">
-          <img src="../assets/img/mujerico.png" width="48" height="48" alt="User" />
-        </div> -->
       <div class="info-container">
         <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <?php echo ucfirst($_SESSION['name']); ?></div>
+          <?php echo ucfirst($_SESSION['name']); ?>
+        </div>
         <div class="btn-group user-helper-dropdown">
           <i class="material-icons" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="true">keyboard_arrow_down</i>
@@ -22,7 +19,7 @@
       </div>
     </div>
 
-     
+
     <div class="menu">
       <ul class="list">
         <li class="header">MENÚ DE NAVEGACIÓN</li>

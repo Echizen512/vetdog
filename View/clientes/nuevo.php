@@ -421,7 +421,7 @@ require_once './../../utils/audit.php';
   <script src="../../assets/js/demo.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
-  <!--------------------------------script nuevo----------------------------->
+  
 <?php
   if (isset($_POST["agregar"])) {
     $dni_due = $_POST['dni_due'];

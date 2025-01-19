@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-11-2024 a las 04:09:18
+-- Tiempo de generación: 19-01-2025 a las 04:53:16
 -- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.0.30
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -262,7 +262,8 @@ INSERT INTO `audit` (`audit`, `tableID`, `table_name`, `userID`, `rol`, `action`
 (309, 68, 'mascota', 1, 'administrador', 'Se creó una mascota', '2024-09-13 02:22:40'),
 (310, 11, 'producto', 1, 'administrador', 'Se creó un producto', '2024-09-13 18:49:52'),
 (311, 12, 'producto', 1, 'administrador', 'Se creó un producto', '2024-09-13 20:33:22'),
-(312, 13, 'producto', 1, 'administrador', 'Se creó un producto', '2024-09-13 20:37:09');
+(312, 13, 'producto', 1, 'administrador', 'Se creó un producto', '2024-09-13 20:37:09'),
+(313, 25, 'categoria', 1, 'administrador', 'Se creó una categoría', '2025-01-16 21:43:14');
 
 -- --------------------------------------------------------
 
@@ -314,7 +315,8 @@ INSERT INTO `category` (`id_cate`, `nomcate`, `fere`) VALUES
 (20, 'Vallas y cercados', '2024-01-25 08:00:00'),
 (21, 'vitaminas', '2024-03-30 04:00:00'),
 (22, 'Desparasitantes', '2024-03-30 04:00:00'),
-(24, 'analgÃ©sicos ', '2024-04-01 04:00:00');
+(24, 'analgÃ©sicos ', '2024-04-01 04:00:00'),
+(25, 'Prueba', '2025-01-16 04:00:00');
 
 -- --------------------------------------------------------
 
@@ -549,7 +551,28 @@ INSERT INTO `productos_vendidos` (`id_pvendi`, `id_prod`, `canti`, `id_venta`) V
 (12, 12, 1, 9),
 (13, 1, 1, 10),
 (14, 13, 1, 11),
-(15, 13, 1, 12);
+(15, 13, 1, 12),
+(16, 1, 1, 13),
+(17, 1, 1, 14),
+(18, 1, 1, 15),
+(19, 3, 1, 16),
+(20, 3, 1, 17),
+(21, 1, 1, 18),
+(22, 1, 1, 19),
+(23, 12, 1, 20),
+(24, 1, 1, 21),
+(25, 1, 1, 22),
+(26, 9, 1, 23),
+(27, 1, 1, 24),
+(28, 1, 1, 25),
+(29, 1, 1, 26),
+(30, 1, 1, 27),
+(31, 1, 1, 28),
+(32, 1, 1, 29),
+(33, 1, 1, 30),
+(34, 1, 1, 31),
+(35, 1, 1, 32),
+(36, 1, 1, 33);
 
 -- --------------------------------------------------------
 
@@ -579,13 +602,13 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id_prod`, `codigo`, `id_cate`, `foto`, `nompro`, `peso`, `weightID`, `id_prove`, `descp`, `preciC`, `precV`, `stock`, `estado`, `fere`) VALUES
-(1, '00000001', 2, 'collar1.jpeg', 'Julius K9 Collar de Adiestramiento Cordino', '90 GR', 0, 2, 'El collar cordino Julius K9 es la elección perfecta para entrenamientos en lugar de collares. Hecho de cordón textil rígido de 3,5 mm, utilizado frecuentemente por entrenadores de perros para perros agresivos o perros en pánico. Recomendado para usar con ', 31.00, 21.00, '105', '1', '2024-10-12 14:02:54'),
+(1, '00000001', 2, 'collar1.jpeg', 'Julius K9 Collar de Adiestramiento Cordino', '90 GR', 0, 2, 'El collar cordino Julius K9 es la elección perfecta para entrenamientos en lugar de collares. Hecho de cordón textil rígido de 3,5 mm, utilizado frecuentemente por entrenadores de perros para perros agresivos o perros en pánico. Recomendado para usar con ', 31.00, 21.00, '88', '1', '2025-01-19 02:54:49'),
 (2, '00000002', 7, 'anti.jpg', 'Specialcan Insecticida Ambiental Perros Y Gatos 250 Ml', '250ml', 0, 1, 'Specialcan Insecticida Ambiental Perros Y Gatos 250 Ml.', 21.00, 35.00, '38', '1', '2024-09-12 20:13:44'),
-(3, '00000003', 6, 'snac.jpg', 'Apetitus Galletas Vainilla Biscuits', '500GR', 0, 1, 'Las Galletas Vainilla Biscuits de Apetitus son snacks para perro para dar como premio o recompensa en cualquier momento del día como parte de una dieta equilibrada. Su calidad se obtiene gracias a los ingredientes y al Bakery Selection', 65.00, 35.00, '30', '1', '2021-12-26 04:59:44'),
+(3, '00000003', 6, 'snac.jpg', 'Apetitus Galletas Vainilla Biscuits', '500GR', 0, 1, 'Las Galletas Vainilla Biscuits de Apetitus son snacks para perro para dar como premio o recompensa en cualquier momento del día como parte de una dieta equilibrada. Su calidad se obtiene gracias a los ingredientes y al Bakery Selection', 65.00, 35.00, '28', '1', '2025-01-18 21:36:27'),
 (5, '00000007', 7, 'anti2.jpg', 'Bayer Advantage Pipeta Gato 0-4 kg.', '80', 0, 3, 'Advantage® Spot-On es una solución de Imidacloprid lista para su aplicación tópica sobre la piel del gato. Mata las pulgas dentro de las 24 horas de aplicado. Previene las re-infestaciones por hasta 1 mes. De muy fácil aplicación es ideal para evitar el e', 20.00, 30.00, '93', '1', '2021-12-26 02:37:00'),
 (8, '00000009', 14, 'omidaanimal.jpg', 'COMIDA PARA PERRO POLLO Y VEGETALES', '374 g', 0, 1, 'Hecho con ingredientes de fibras naturales', 5.00, 10.00, '98', '1', '2021-12-26 05:02:50'),
-(9, '12959031410057', 3, 'Cepillo.jpg', 'Cepillo Desenredante para Perros y Gatos \"PetCare\"', '33', 0, 3, 'Cepillo suave y eficaz para eliminar nudos y pelo suelto en perros y gatos. Ideal para mascotas con pelajes largos o densos. Su diseño ergonómico facilita su uso y reduce el estrés del cepillado.', 20.00, 5.00, '98', '1', '2024-10-12 04:35:09'),
-(12, '05ZGLKRDY7FHQN', 16, 'Arena.jpg', 'Arena para Gatos \"CleanPaws\" (10kg)', '3', 1, 1, 'Arena aglomerante de alta absorción, diseñada para eliminar olores y facilitar la limpieza diaria del arenero. Hecha de materiales ecológicos y suaves para las patas de tu gato.', 12.00, 22.00, '9', '1', '2024-10-12 04:30:43'),
+(9, '12959031410057', 3, 'Cepillo.jpg', 'Cepillo Desenredante para Perros y Gatos \"PetCare\"', '33', 0, 3, 'Cepillo suave y eficaz para eliminar nudos y pelo suelto en perros y gatos. Ideal para mascotas con pelajes largos o densos. Su diseño ergonómico facilita su uso y reduce el estrés del cepillado.', 20.00, 5.00, '97', '1', '2025-01-19 01:56:06'),
+(12, '05ZGLKRDY7FHQN', 16, 'Arena.jpg', 'Arena para Gatos \"CleanPaws\" (10kg)', '3', 1, 1, 'Arena aglomerante de alta absorción, diseñada para eliminar olores y facilitar la limpieza diaria del arenero. Hecha de materiales ecológicos y suaves para las patas de tu gato.', 12.00, 22.00, '8', '1', '2025-01-19 01:16:53'),
 (13, '0MXY3TGK0JED57', 15, 'Correa.jpg', 'Correa Extensible para Perros \"Flexi Leash\" (5m)', '12', 1, 1, 'Correa retráctil de hasta 5 metros, ideal para dar libertad a tu perro durante los paseos sin perder el control. Con mango ergonómico y sistema de frenado rápido para mayor seguridad.', 22.00, 33.00, '-1', '1', '2024-11-03 12:05:51');
 
 -- --------------------------------------------------------
@@ -946,7 +969,28 @@ INSERT INTO `venta` (`id_venta`, `fecha`, `numfact`, `estado`, `id_due`, `total`
 (9, '2024-10-10 19:13:08', 9, '1', 35, 22.00, 'Factura', 'Tarjeta', '', '', '', '', '', '', 0.00, 0.00),
 (10, '2024-10-12 10:02:53', 10, '1', 26, 21.00, 'Factura', 'Tarjeta', '', '', '', '', '', '', 0.00, 0.00),
 (11, '2024-11-03 07:58:28', 11, '1', 26, 33.00, 'Boleta', 'Tarjeta', '', '', '', '', '', '', 0.00, 0.00),
-(12, '2024-11-03 08:05:51', 12, '1', 26, 33.00, 'Boleta', 'Tarjeta', '', '', '', '', '', '', 0.00, 0.00);
+(12, '2024-11-03 08:05:51', 12, '1', 26, 33.00, 'Boleta', 'Tarjeta', '', '', '', '', '', '', 0.00, 0.00),
+(13, '2025-01-16 22:28:03', 13, '1', 21, 21.00, 'Factura', 'efectivo', '', '', '', '', '', '', 100.00, 79.00),
+(14, '2025-01-18 17:04:20', 14, '1', 21, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
+(15, '2025-01-18 17:31:41', 15, '1', 24, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
+(16, '2025-01-18 17:32:49', 16, '1', 21, 35.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
+(17, '2025-01-18 17:36:27', 17, '1', 26, 35.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
+(18, '2025-01-18 21:12:26', 18, '1', 26, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
+(19, '2025-01-18 21:14:50', 19, '1', 26, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
+(20, '2025-01-18 21:16:53', 20, '1', 26, 22.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
+(21, '2025-01-18 21:52:52', 21, '1', 0, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
+(22, '2025-01-18 21:53:58', 22, '1', 0, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
+(23, '2025-01-18 21:56:06', 23, '1', 0, 5.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
+(24, '2025-01-18 21:56:23', 24, '1', 0, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
+(25, '2025-01-18 21:57:41', 25, '1', 0, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
+(26, '2025-01-18 22:00:49', 26, '1', 0, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
+(27, '2025-01-18 22:11:47', 27, '1', 0, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
+(28, '2025-01-18 22:13:13', 28, '1', 0, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
+(29, '2025-01-18 22:13:56', 29, '1', 0, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
+(30, '2025-01-18 22:14:50', 30, '1', 26, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
+(31, '2025-01-18 22:17:20', 31, '1', 26, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
+(32, '2025-01-18 22:17:59', 32, '1', 26, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
+(33, '2025-01-18 22:54:49', 33, '1', 26, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00);
 
 -- --------------------------------------------------------
 
@@ -1185,7 +1229,7 @@ ALTER TABLE `animales`
 -- AUTO_INCREMENT de la tabla `audit`
 --
 ALTER TABLE `audit`
-  MODIFY `audit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=313;
+  MODIFY `audit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=314;
 
 --
 -- AUTO_INCREMENT de la tabla `cargo`
@@ -1197,7 +1241,7 @@ ALTER TABLE `cargo`
 -- AUTO_INCREMENT de la tabla `category`
 --
 ALTER TABLE `category`
-  MODIFY `id_cate` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_cate` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `compra`
@@ -1239,7 +1283,7 @@ ALTER TABLE `productos_comprados`
 -- AUTO_INCREMENT de la tabla `productos_vendidos`
 --
 ALTER TABLE `productos_vendidos`
-  MODIFY `id_pvendi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_pvendi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de la tabla `products`
@@ -1293,7 +1337,7 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT de la tabla `venta`
 --
 ALTER TABLE `venta`
-  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de la tabla `veterinarian`

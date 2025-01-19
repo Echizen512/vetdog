@@ -34,21 +34,7 @@ require_once './../assets/db/connectionMysql.php';
 </style>
 <body class="theme-red">
  
-  <div class="page-loader-wrapper">
-    <div class="loader">
-      <div class="preloader">
-        <div class="spinner-layer pl-red">
-          <div class="circle-clipper left">
-            <div class="circle"></div>
-          </div>
-          <div class="circle-clipper right">
-            <div class="circle"></div>
-          </div>
-        </div>
-      </div>
-      <p>Cargando...</p>
-    </div>
-  </div>
+<?php include('./../Includes/Loader.php'); ?>
    
 
    
@@ -69,7 +55,7 @@ require_once './../assets/db/connectionMysql.php';
 
   <?php include '../Includes/Sidebar.php'; ?>
 
-  <!--=============================================================CONTENIDO DE LA PÁGINA =============================================================-->
+ 
   <section class="content">
     <div class="container-fluid">
       <div class="row clearfix">
@@ -137,40 +123,13 @@ require_once './../assets/db/connectionMysql.php';
           </div>
         </div>
       </div>
-      <!-- #END# Exportable Table -->
+      
     </div>
   </section>
 
  
-  <script src="../assets/plugins/jquery/jquery.min.js"></script>
- 
-  <script src="../assets/plugins/bootstrap/js/bootstrap.js"></script>
-  <!-- Select Plugin Js -->
-  <script src="../assets/plugins/bootstrap-select/js/bootstrap-select.js"></script>
- 
-  <script src="../assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-   
-  <script src="../assets/plugins/node-waves/waves.js"></script>
 
-  <!-- Jquery DataTable Plugin Js -->
-  <script src="../assets/plugins/jquery-datatable/jquery.dataTables.js"></script>
-  <script src="../assets/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
-  <script src="../assets/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
-  <script src="../assets/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
-  <script src="../plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
-  <script src="../assets/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
-  <script src="../assets/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
-  <script src="../assets/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
-  <script src="../assets/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
-
-  
-  <script src="../assets/js/admin.js"></script>
-  <!-- <script src="../assets/js/pages/tables/jquery-datatable.js"></script> -->
-
-  
-  <script src="../assets/js/demo.js"></script>
-  <!-- sweetalert2 -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <?php include '../Includes/Footer.php'; ?>
 
 <script>
 'use strict';

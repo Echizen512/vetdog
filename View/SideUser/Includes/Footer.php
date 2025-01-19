@@ -1,0 +1,11 @@
+<script src="../../assets/plugins/jquery/jquery.min.js"></script>
+  <script src="../../assets/js/funciones/tipo.js"></script>
+  <script src="../../assets/plugins/bootstrap/js/bootstrap.js"></script>
+  <script src="../../assets/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+  <script src="../../assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+  <script src="../../assets/plugins/node-waves/waves.js"></script>
+  <script src="../../assets/plugins/autosize/autosize.js"></script>
+  <script src="../../assets/js/admin.js"></script>
+  <script src="../../assets/js/pages/forms/basic-form-elements.js"></script>
+  <script src="../../assets/js/demo.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>

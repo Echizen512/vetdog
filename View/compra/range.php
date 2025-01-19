@@ -24,7 +24,7 @@ GROUP_CONCAT( products.nompro, '..', products.codigo, '..',products.preciC, '..'
 		<td class="text-center"><?php echo $fetch['fecha']?></td>
 		<td class="text-center"><?php echo $fetch['nomprove']?></td>
 		<td class="text-center"><?php echo $fetch['tipopa']?></td>
-		<td class="text-center">$/.<?php echo $fetch['total']?></td>
+		<td class="text-center">$<?php echo $fetch['total']?></td>
 
 		<td class="text-center">
                 <?php    
@@ -75,7 +75,7 @@ GROUP_CONCAT( products.nompro, '..', products.codigo, '..',products.preciC, '..'
 		<td class="text-center"><?php echo $fetch['fecha']?></td>
 		<td class="text-center"><?php echo $fetch['nomprove']?></td>
 		<td class="text-center"><?php echo $fetch['tipopa']?></td>
-		<td class="text-center">$/.<?php echo $fetch['total']?></td>
+		<td class="text-center">$<?php echo $fetch['total']?></td>
 
 		<td class="text-center">
                 <?php    

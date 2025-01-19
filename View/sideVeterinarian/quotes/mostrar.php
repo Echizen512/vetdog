@@ -226,11 +226,11 @@ input[type="checkbox"] {
           </div>
         </div>
       </div>
-      <!-- #END# Exportable Table -->
+      
     </div>
   </section>
 
-  <!--=============================================================CONTENIDO DE LA PÁGINA =============================================================-->
+ 
 
  
   <script src="./../../../assets/plugins/jquery/jquery.min.js"></script>

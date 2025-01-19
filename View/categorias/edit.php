@@ -346,7 +346,7 @@ require_once './../../utils/audit.php';
   <script src="../../assets/js/pages/forms/basic-form-elements.js"></script>
   <!-- Demo Js -->
   <script src="../../assets/js/demo.js"></script>
-  <!--------------------------------script nuevo----------------------------->
+  
   <?php
   if (isset($_POST["update"])) {
     if(empty($_POST['nomcate'])) { ?>

@@ -14,6 +14,7 @@
     <link href="../css/style.css" rel="stylesheet">
     <link href="../assets/css/fullcalendar.css" rel="stylesheet" />
     <link href="../assets/css/themes/all-themes.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/swal.css">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/lll.png" />
     <script src="../assets/js/popper.js"></script>
     <script src="../assets/js/tippy-bundle.umd.js"></script>

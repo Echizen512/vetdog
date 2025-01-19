@@ -298,7 +298,7 @@ require_once './../../utils/audit.php';
   
   <script src="../assets/js/demo.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-  <!--------------------------------script nuevo----------------------------->
+  
   <?php
   if (isset($_POST['update'])) {
     if (empty($_POST['dnivet']) && empty($_POST['nomvet']) && empty($_POST['apevet']) && empty($_POST['movil']) && empty($_POST['correo']) && empty($_POST['direcc'])) { ?>

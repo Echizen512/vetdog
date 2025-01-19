@@ -32,21 +32,7 @@ include_once './../assets/db/connectionMysql.php';
 </style>
 <body class="theme-red">
  
-  <div class="page-loader-wrapper">
-    <div class="loader">
-      <div class="preloader">
-        <div class="spinner-layer pl-red">
-          <div class="circle-clipper left">
-            <div class="circle"></div>
-          </div>
-          <div class="circle-clipper right">
-            <div class="circle"></div>
-          </div>
-        </div>
-      </div>
-      <p>Cargando...</p>
-    </div>
-  </div>
+<?php include('./../Includes/Loader.php'); ?>
    
 
    
@@ -67,7 +53,7 @@ include_once './../assets/db/connectionMysql.php';
 
   <?php include '../Includes/Sidebar.php'; ?>
 
-  <!--=============================================================CONTENIDO DE LA PÁGINA =============================================================-->
+ 
   <section class="content">
     <div class="container-fluid">
       <div class="row clearfix">
@@ -136,7 +122,7 @@ include_once './../assets/db/connectionMysql.php';
           </div>
         </div>
       </div>
-      <!-- #END# Exportable Table -->
+      
     </div>
   </section>
 

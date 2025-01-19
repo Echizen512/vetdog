@@ -302,7 +302,7 @@ require_once './../../assets/db/connectionMysql.php';
           <aside id="rightsidebar" class="right-sidebar"></aside>
       </div>
   </section>
-  <!--=============================================================CONTENIDO DE LA PÁGINA =============================================================-->
+ 
 
   <section class="content">
     <h2 class="text-center" style="margin-bottom: 15px;">Gráficas</h2>

@@ -17,7 +17,7 @@ $datos = $impr->allBitacora();
 		<td class="text-center"><?php echo $datos[$x]['nomprove']; ?></td>
 
 		<td class="text-center"><?php echo $datos[$x]['tipopa']; ?></td>
-		<td class="text-center">$/.<?php echo $datos[$x]['total']; ?></td>
+		<td class="text-center">$<?php echo $datos[$x]['total']; ?></td>
 
 		<td class="text-center">
                 <?php    

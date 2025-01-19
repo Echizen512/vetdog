@@ -360,7 +360,7 @@ if (!$products) {
                             </form> 
                         <?php endif; ?>
                     </td>
-                    <td class="text-center">$/. <?php echo htmlspecialchars($r->precio_compra); ?></td>
+                    <td class="text-center"> <?php echo htmlspecialchars($r->precio_compra); ?></td>
                 </tr>
             <?php endwhile; ?>
         </tbody>
@@ -409,7 +409,7 @@ if (!$products) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     
 
-    <!--------------------------------script nuevo----------------------------->
+    
 
   
 </body>

@@ -168,7 +168,7 @@ require_once './../../../assets/db/connectionMysql.php';
     </article>
     
   </section>
-  <!--=============================================================CONTENIDO DE LA PÁGINA =============================================================-->
+ 
   <section class="content">
     <div class="container-fluid">
       <div class="row clearfix">
@@ -226,7 +226,7 @@ require_once './../../../assets/db/connectionMysql.php';
           </div>
         </div>
       </div>
-      <!-- #END# Exportable Table -->
+      
     </div>
   </section>
 

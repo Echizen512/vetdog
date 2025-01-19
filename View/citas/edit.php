@@ -426,7 +426,7 @@ $quotesID = $_GET['quotesID'];
   <!-- Demo Js -->
   <script src="../../assets/js/demo.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-  <!--------------------------------script nuevo----------------------------->
+  
   <script>
     'use strict';
     // * Vertify if get All data for URL 

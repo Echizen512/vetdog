@@ -9,23 +9,8 @@ require_once '../assets/db/connectionMysql.php';
 <?php include('./../Includes/Head.php'); ?>
 
 <body class="theme-red">
-<!-- Page Loader -->
-    <div class="page-loader-wrapper">
-        <div class="loader">
-            <div class="preloader">
-                <div class="spinner-layer pl-red">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
-                </div>
-            </div>
-            <p>Cargando...</p>
-        </div>
-    </div>
-     
+
+<?php include('./../Includes/Loader.php'); ?>
 
      
     <div class="overlay"></div>
@@ -63,206 +48,11 @@ require_once '../assets/db/connectionMysql.php';
     </nav>
    
 
-    <section>
-          
-    <aside id="leftsidebar" class="sidebar">
-       
-      <div class="user-info">
- 
-        <div class="info-container">
-          <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo ucfirst($_SESSION['name']); ?></div>
-          <div class="btn-group user-helper-dropdown">
-            <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
-            <ul class="dropdown-menu pull-right">
-              <li><a href="../pages-logout"><img src="./../../assets/icons/MaterialSymbolsLightExitToApp.svg" style="width: 25px"> Cerrar Sesión</a></li>
-              <li><a href="./../panel-admin/edit-admin.php" style="display: flex;gap: 5px;"><img src="./../../assets/icons/IconParkSolidConfig.svg" style="width: 25px">Editar perfil</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-            <!-- #User Info -->
-
-
-            <div class="menu">
-                <ul class="list">
-                    <li class="header">MENÚ DE NAVEGACIÓN</li>
-                    <li>
-                        <a href="../vista/panel-admin/administrador">
-                            <i class="material-icons">home</i>
-                            <span>INICIO</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">inbox</i>
-                            <span>PRODUCTOS</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../vista/productos/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../folder/productos">Listar / Modificar</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">low_priority</i>
-                            <span>CATEGORÍAS</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../vista/categorias/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../folder/categorias">Listar / Modificar</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">supervisor_account</i>
-                            <span>CLIENTES</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../vista/clientes/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../folder/clientes">Listar / Modificar</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">person_pin</i>
-                            <span>VETERINARIOS</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../vista/veterinarios/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../folder/veterinarios">Listar / Modificar</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">flutter_dash</i>
-                            <span>MASCOTAS</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../vista/mascotas/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../folder/mascotas">Listar / Modificar</a>
-                            </li>
-                            <li>
-                                <a href="../folder/tipo">Tipos</a>
-                            </li>
-                            <li>
-                                <a href="../folder/raza">Razas</a>
-                            </li>
-                        </ul>
-</li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">business</i>
-                            <span>PROVEEDORES</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../vista/proveedores/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../folder/proveedores">Listar / Modificar</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">shopping_basket</i>
-                            <span>COMPRA</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../vista/compra/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../folder/compra">Listar / Modificar</a>
-                            </li>
-
-                            <li>
-                                <a href="../vista/compra/compras_fecha">Consultar por fecha</a>
-                            </li>
-                        </ul>
-                </li>
-
-                <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">monetization_on</i>
-                            <span>VENTA</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../vista/venta/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../folder/venta">Listar / Modificar</a>
-                            </li>
-                            <li>
-                                <a href="../vista/venta/venta_fecha">Consultar por fecha</a>
-                            </li>
-                        </ul>
-                </li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">calendar_today</i>
-                            <span>CITAS</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../vista/citas/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../folder/citas">Listar / Modificar</a>
-                            </li>
-                            <li>
-                                <a href="../folder/servicio">Servicio</a>
-                            </li>
-                        </ul>
-    </li>
-    
-        <li>
-            <a href="javascript:void(0);" class="menu-toggle">
-                <i class="material-icons">assessment</i>
-                <span>BITÁCORA</span>
-            </a>
-            <ul class="ml-menu">
-                <li>
-                <a href="../vista/audit/mostrar.php">Mostrar</a>
-                </li>
-            </ul>
-        </li>
-
-        <aside id="rightsidebar" class="right-sidebar">
-        </aside>
-    </section>
+    <?php include '../Includes/Sidebar.php'; ?>
 
 
 
-<!--=============================================================CONTENIDO DE LA PÁGINA =============================================================-->
+
     <section class="content">
         <div class="container-fluid">
             <div class="row clearfix">
@@ -305,7 +95,7 @@ $compras = $sentencia->fetchAll(PDO::FETCH_OBJ);
                                         <th class="text-center">PROVEDDOR</th>
                                        
                                         <th class="text-center">ESTADO</th>
-                                        <th class="text-center">DETALLES</th>
+
                                      
                                       
                                     </tr>
@@ -320,7 +110,7 @@ $compras = $sentencia->fetchAll(PDO::FETCH_OBJ);
                                     
                                    
 
-                                    <td class="text-center">$/.<?php echo $compra->total ?></td>
+                                    <td class="text-center">$<?php echo $compra->total ?></td>
                                     <td class="text-center"><?php echo $compra->nomprove ?></td>
 
                                     <td class="text-center">
@@ -338,12 +128,7 @@ $compras = $sentencia->fetchAll(PDO::FETCH_OBJ);
                      </form>
                         <?php  } ?>                         
             </td>
-            <td class="text-center">
-                <a type="button" href="../vista/compra/detalles?id=<?php echo $compra->id_compra; ?>"  class="btn bg-blue btn-circle waves-effect waves-circle waves-float">
-                    <i class="material-icons">remove_red_eye</i>
 
-                </a>
-            </td>
 
                                     
                                     </tr>
@@ -357,41 +142,11 @@ $compras = $sentencia->fetchAll(PDO::FETCH_OBJ);
                     </div>
                 </div>
             </div>
-            <!-- #END# Exportable Table -->
+            
         </div>
     </section>
 
-   
-    <script src="../assets/plugins/jquery/jquery.min.js"></script>
-   
-    <script src="../assets/plugins/bootstrap/js/bootstrap.js"></script>
-    <!-- Select Plugin Js -->
-    <script src="../assets/plugins/bootstrap-select/js/bootstrap-select.js"></script>
-   
-    <script src="../assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-     
-    <script src="../assets/plugins/node-waves/waves.js"></script>
-
-    <!-- Jquery DataTable Plugin Js -->
-    <script src="../assets/plugins/jquery-datatable/jquery.dataTables.js"></script>
-    <script src="../assets/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
-    <script src="../assets/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
-    <script src="../assets/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
-    <script src="../plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
-    <script src="../assets/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
-    <script src="../assets/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
-    <script src="../assets/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
-    <script src="../assets/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
-
-    
-    <script src="../assets/js/admin.js"></script>
-    <script src="../assets/js/pages/tables/jquery-datatable.js"></script>
-
-    
-    <script src="../assets/js/demo.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-    <!--------------------------------script edit cate----------------------------->
-    
+    <?php include('./../Includes/Footer.php'); ?>
 </body>
 
 </html>
