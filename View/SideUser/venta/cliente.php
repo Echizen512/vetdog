@@ -8,9 +8,5 @@ $id_due = $_SESSION['ownerID'];
 $conexion = mysqli_connect("localhost","root","","vetdog");
 $query = $conexion->query("SELECT * FROM owner WHERE id_due = $id_due");
 
-
-while ( $row = $query->fetch_assoc() )
-{
-    echo '<option value="' . $row['id_due']. '">' . $row['nom_due'] . '</option>' . "\n";
-}
+while ($row = $query->fetch_assoc())
 ?>

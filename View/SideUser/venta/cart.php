@@ -10,6 +10,7 @@ $id_due = $_SESSION['ownerID'];
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -175,13 +176,12 @@ $id_due = $_SESSION['ownerID'];
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                         <thead>
-                                            <tr>
+                                            <tr class="bg-info">
                                                 <th class="text-center">FOTO</th>
                                                 <th class="text-center">PRODUCTO</th>
                                                 <th class="text-center">CANTIDAD</th>
                                                 <th class="text-center">PRECIO</th>
                                                 <th class="text-center">REMOVER</th>
-                                                <th class="text-center">STOCK</th>
                                                 <th class="text-center">SUBTOTAL</th>
                                             </tr>
                                         </thead>
@@ -215,55 +215,38 @@ $id_due = $_SESSION['ownerID'];
                                                         ?>
                                                         <div class="text-center">
                                                             <a href="delfromcart?id=<?php echo $c["id_prod"]; ?>"
-                                                                class="btn btn-danger"><i class="material-icons">delete</i></a>
+                                                                class="btn btn-danger" style="border-radius: 30px;"><i class="material-icons">delete</i></a>
                                                         </div>
                                                     </td>
-                                                    <th class="text-center"><?php echo $r->stock; ?></th>
                                                     <td class="text-center">$/. <?php echo $c["canti"] * $r->precV; ?></td>
                                                     <?php $total = $total + ($c["canti"] * $r->precV); ?>
                                                 <?php endforeach; ?>
                                             </tr>
                                             <tr>
-                                                <td colspan="3" align="right">
+                                                <td colspan="3" align="right" class="bg-info">
                                                     <h3>Total:</h3>
                                                 </td>
-                                                <td align="right">
+                                                <td align="right" class="bg-success">
                                                     <h3>$/. <?php echo number_format($total, 2); ?></h3>
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
-
-                                    <div class="panel-heading" style="background-color:#2b2b2b;">
-                                        <h4 class="panel-title"></h4>
-                                        <h1 id="big_total" class="panel-title text-center text-black text-white"
-                                            style="font-size:42px; color:#ffff;"> $/.
-                                            <?php echo number_format($total, 2); ?>
-                                        </h1>
-                                    </div>
                                     <hr>
                                     <form class="form-horizontal" method="post" autocomplete="off" action="process.php">
-                                        <div class="form-group">
-                                            <div class="text-center">
-                                                <button type="submit" class="btn btn-success"
-                                                    style="border-radius: 30px;">Facturar venta</button>
-                                                <button onclick="window.location.href='nuevo'" class="btn btn-primary"
-                                                    style="border-radius: 30px;">Seguir comprando</button>
-                                            </div>
-                                        </div>
+                                        
                                         <div class="form-group" style="display:none;">
                                             <label for="inputEmail3" class="col-sm-2 control-label">Estado</label>
                                             <div class="col-sm-5">
                                                 <input type="text" name="estado" class="form-control" value="1">
                                             </div>
                                         </div>
-                                        <div class="col-md-2" id="id_due" style="display:none;">
-                                            <div class="form-group">
-                                                <label class="control-label">ID</label>
-                                                <select class="form-control form-control-line" id="id_due" name="id_due">
-                                                </select>
-                                            </div>
-                                        </div>
+                                        <div class="row clearfix">
+                                    <div class="col-sm-4">
+                                        <input type="hidden" name="id_due" value="<?php echo $id_due; ?>" />
+                                        
+                                    </div>
+                                </div>
                                         <div class="form-group" style="display:none;">
                                             <label class="control-label">Cati</label>
                                             <input type="text" class="form-control" value="<?php echo $c["canti"]; ?>"
@@ -400,33 +383,30 @@ $id_due = $_SESSION['ownerID'];
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-success"
+                                                    style="border-radius: 30px;">Facturar venta</button>
+                                                <button onclick="window.location.href='nuevo'" class="btn btn-primary"
+                                                    style="border-radius: 30px;">Seguir comprando</button>
+                                            </div>
+                                        </div>
                                     </form>
                                 <?php else: ?>
                                     <p class="alert alert-warning">El carrito esta vacio.</p>
                                 <?php endif; ?>
                                 <br>
-                                <h3>Datos del Cliente <a style="margin-left:35px; border-radius: 30px;" href="#new"
-                                        data-toggle="modal" title="New" class="btn btn-primary"><i
-                                            class="material-icons">add_circle</i>
-                                        Nuevo</a>
-                                    <?php include('./modal.php'); ?></h3>
+                        
                                 <div class="row clearfix">
                                     <div class="col-sm-4">
-                                        <label class="control-label">Nombre del cliente</label>
-                                        <select name="id_due" required class="form-control show-tick"
-                                            onchange="showselect(this.value)">
-                                            <option value="">-- Seleccione un cliente --</option>
-                                            <?php include "./cliente.php" ?>
-                                        </select>
+                                        <input type="hidden" name="id_due" value="<?php echo $id_due; ?>" />
+            
                                     </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label class="control-label">Fecha</label>
-                                            <div class="form-line">
-                                                <input type="text" value="<?php $fechaActual = date('Y-m-d');
-                                                echo $fechaActual; ?>" class="form-control"
-                                                    placeholder="fecha..." />
-                                            </div>
+                                </div> 
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                            <input type="hidden" value="<?php $fechaActual = date('Y-m-d');
+                                            echo $fechaActual; ?>" class="form-control" placeholder="fecha..." />
                                         </div>
                                     </div>
                                 </div>
@@ -435,6 +415,7 @@ $id_due = $_SESSION['ownerID'];
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 
@@ -477,40 +458,21 @@ $id_due = $_SESSION['ownerID'];
         });
     </script>
 
-<script src="../../../assets/plugins/bootstrap/js/bootstrap.js"></script>
-<script src="../../../assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-<script src="../../../assets/plugins/node-waves/waves.js"></script>
-<script src="../../../assets/plugins/autosize/autosize.js"></script>
-<script src="../../../assets/plugins/momentjs/moment.js"></script>
-<script src="../../../assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
-<script src="../../../assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-<script src="../../../assets/js/admin.js"></script>
-<script src="../../../assets/js/demo.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script src="../../../assets/plugins/bootstrap/js/bootstrap.js"></script>
+    <script src="../../../assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <script src="../../../assets/plugins/node-waves/waves.js"></script>
+    <script src="../../../assets/plugins/autosize/autosize.js"></script>
+    <script src="../../../assets/plugins/momentjs/moment.js"></script>
+    <script
+        src="../../../assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <script src="../../../assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="../../../assets/js/admin.js"></script>
+    <script src="../../../assets/js/demo.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
 
-    <script type="text/javascript">
-        function showselect(str) {
-            var xmlhttp;
-            if (str == "") {
-                document.getElementById("txtHint").innerHTML = "";
-                return;
-            }
-            if (window.XMLHttpRequest) {
-                xmlhttp = new XMLHttpRequest();
-            }
-            else {
-                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-            }
-            xmlhttp.onreadystatechange = function () {
-                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    document.getElementById("id_due").innerHTML = xmlhttp.responseText;
-                }
-            }
-            xmlhttp.open("GET", "cliente_ruc.php?c=" + str, true);
-            xmlhttp.send();
-        }
-    </script>
+
+
 
 
     <script type="text/javascript">
@@ -599,9 +561,5 @@ $id_due = $_SESSION['ownerID'];
     }
     ?>
 
-
-
-
 </body>
-
 </html>

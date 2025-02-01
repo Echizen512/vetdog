@@ -58,7 +58,7 @@ $conn->close();
                 <table id="tabla-compras"
                   class="table table-bordered table-striped table-hover dataTable js-exportable">
                   <thead>
-                    <tr>
+                    <tr class="bg-info">
                       <th class="text-center">ID Venta</th>
                       <th class="text-center">Fecha</th>
                       <th class="text-center">Número de Factura</th>

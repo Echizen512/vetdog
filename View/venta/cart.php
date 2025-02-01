@@ -9,8 +9,8 @@ require_once '../../assets/db/connectionMysql.php';
 
 <body class="theme-red">
 
-<?php include '../../Includes/Head2.php'; ?>
-<?php include '../../Includes/Loader.php'; ?>
+    <?php include '../../Includes/Head2.php'; ?>
+    <?php include '../../Includes/Loader.php'; ?>
 
     <div class="overlay"></div>
 
@@ -64,7 +64,7 @@ require_once '../../assets/db/connectionMysql.php';
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                         <thead>
-                                            <tr>
+                                            <tr class="bg-info">
                                                 <th class="text-center">FOTO</th>
                                                 <th class="text-center">PRODUCTO</th>
                                                 <th class="text-center">CANTIDAD</th>
@@ -113,44 +113,44 @@ require_once '../../assets/db/connectionMysql.php';
                                                 <?php endforeach; ?>
                                             </tr>
                                             <tr>
-                                                <td colspan="3" align="right">
+                                                <td colspan="3" align="right" class="bg-info">
                                                     <h3>Total:</h3>
                                                 </td>
-                                                <td align="right">
+                                                <td align="right" class="bg-success">
                                                     <h3>$/. <?php echo number_format($total, 2); ?></h3>
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
 
-                                    <div class="panel-heading" style="background-color:#2b2b2b;">
-                                        <h4 class="panel-title"></h4>
-                                        <h1 id="big_total" class="panel-title text-center text-black text-white"
-                                            style="font-size:42px; color:#ffff;"> $/.
-                                            <?php echo number_format($total, 2); ?></h1>
-                                    </div>
                                     <hr>
+                                    <h3>Datos del Cliente <a style="margin-left:35px; border-radius: 30px;" href="#new"
+                                            data-toggle="modal" title="New" class="btn btn-primary"><i
+                                                class="material-icons">add_circle</i>
+                                            Nuevo</a>
+                                        <?php include('../venta/modal.php'); ?></h3>
                                     <form class="form-horizontal" method="post" autocomplete="off" action="process.php">
-                                        <div class="form-group">
-                                            <div class="text-center">
-                                                <button type="submit" class="btn btn-success" style="border-radius: 30px;">Facturar venta</button>
-                                                <button onclick="window.location.href='nuevo'"
-                                                    class="btn btn-primary" style="border-radius: 30px;">Seguir comprando</button>
-                                            </div>
-                                        </div>
+                                       
                                         <div class="form-group" style="display:none;">
                                             <label for="inputEmail3" class="col-sm-2 control-label">Estado</label>
                                             <div class="col-sm-5">
                                                 <input type="text" name="estado" class="form-control" value="1">
                                             </div>
                                         </div>
-                                        <div class="col-md-2" id="id_due" style="display:none;">
-                                            <div class="form-group">
-                                                <label class="control-label">ID</label>
-                                                <select class="form-control form-control-line" id="id_due" name="id_due">
-                                                </select>
+                                        <div class="row clearfix">
+                                            <div class="col-sm-4">
+                                                <label class="control-label">DNI del cliente</label>
+                                                <input type="text" id="dni" class="form-control"
+                                                    oninput="verifyDNI(this.value)" placeholder="Ingrese DNI">
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <br>
+                                                <label class="control-label">Nombre del cliente</label>
+                                                <span id="cliente-info" class="control-label">--</span>
+                                                <input type="hidden" id="id_due" name="id_due" value="">
                                             </div>
                                         </div>
+
                                         <div class="form-group" style="display:none;">
                                             <label class="control-label">Cati</label>
                                             <input type="text" class="form-control" value="<?php echo $c["canti"]; ?>"
@@ -285,37 +285,28 @@ require_once '../../assets/db/connectionMysql.php';
                                                             </td>
                                                         </tr>
                                                     </table>
+                                                    
                                                 </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-success"
+                                                    style="border-radius: 30px;">Facturar venta</button>
+                                                <button onclick="window.location.href='nuevo'" class="btn btn-primary"
+                                                    style="border-radius: 30px;">Seguir comprando</button>
                                             </div>
                                         </div>
                                     </form>
                                 <?php else: ?>
                                     <p class="alert alert-warning">El carrito esta vacio.</p>
                                 <?php endif; ?>
-                                <br>
-                                <h3>Datos del Cliente <a style="margin-left:35px; border-radius: 30px;" href="#new" data-toggle="modal"
-                                        title="New" class="btn btn-primary"><i class="material-icons">add_circle</i>
-                                        Nuevo</a>
-                                    <?php include('../venta/modal.php'); ?></h3>
-                                <div class="row clearfix">
-                                    <div class="col-sm-4">
-                                        <label class="control-label">Nombre del cliente</label>
-                                        <select name="id_due" required class="form-control show-tick"
-                                            onchange="showselect(this.value)">
-                                            <option value="">-- Seleccione un cliente --</option>
-                                            <?php include "../funciones/cliente.php" ?>
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label class="control-label">Fecha</label>
-                                            <div class="form-line">
-                                                <input type="text"
-                                                    value="<?php $fechaActual = date('Y-m-d');
-                                                    echo $fechaActual; ?>"
-                                                    class="form-control" placeholder="fecha..." />
-                                            </div>
-                                        </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <input type="hidden" value="<?php $fechaActual = date('Y-m-d');
+                                        echo $fechaActual; ?>" class="form-control"
+                                            placeholder="fecha..." />
                                     </div>
                                 </div>
                             </div>
@@ -324,11 +315,31 @@ require_once '../../assets/db/connectionMysql.php';
                 </div>
             </div>
         </div>
+        </div>
+        </div>
     </section>
 
 
     <script src="../../assets/plugins/jquery/jquery.min.js"></script>
     <script src="../../assets/js/card-js.min.js"></script>
+
+    <script>
+        function verifyDNI(dni) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "../funciones/verificar_cliente.php?dni=" + dni, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    document.getElementById("cliente-info").innerText = response.name;
+                    document.getElementById("id_due").value = response.id;
+                }
+            };
+            xhr.send();
+        }
+
+
+
+    </script>
 
     <script>
         $(function () {
@@ -437,44 +448,44 @@ require_once '../../assets/db/connectionMysql.php';
         ?>
 
 
-    <?php
-    if (mysqli_num_rows($result) > 0) {
-        if ($result) {
-    ?>
-
-    <script type="text/javascript">
-        swal("Oops...!", "Ya existe el registro a agregar!", "error")
-    </script>
-
-    <?php
-        }
-    } else {
-        $sql2 = "insert into owner(dni_due,nom_due,ape_due,estado) 
-        values ('$dni_due','$nom_due','$ape_due','$estado')";
-        if (mysqli_query($conn, $sql2)) {
-            if ($sql2) {
+        <?php
+        if (mysqli_num_rows($result) > 0) {
+            if ($result) {
                 ?>
 
-    <script type="text/javascript">
-        swal("¡Registrado!", "Agregado correctamente", "success").then(function () {
-            window.location = "../venta/cart";
-        });
-    </script>
+                <script type="text/javascript">
+                    swal("Oops...!", "Ya existe el registro a agregar!", "error")
+                </script>
 
-
-    <?php
-            } else {
-                ?>
-    <script type="text/javascript">
-        swal("Oops...!", "No se pudo guardar!", "error")
-    </script>
-    <?php
+                <?php
             }
         } else {
-            echo "Error: " . $sql2 . "" . mysqli_error($conn);
+            $sql2 = "insert into owner(dni_due,nom_due,ape_due,estado) 
+        values ('$dni_due','$nom_due','$ape_due','$estado')";
+            if (mysqli_query($conn, $sql2)) {
+                if ($sql2) {
+                    ?>
+
+                    <script type="text/javascript">
+                        swal("¡Registrado!", "Agregado correctamente", "success").then(function () {
+                            window.location = "../venta/cart";
+                        });
+                    </script>
+
+
+                    <?php
+                } else {
+                    ?>
+                    <script type="text/javascript">
+                        swal("Oops...!", "No se pudo guardar!", "error")
+                    </script>
+                    <?php
+                }
+            } else {
+                echo "Error: " . $sql2 . "" . mysqli_error($conn);
+            }
         }
-    }
-    $conn->close();
+        $conn->close();
     }
     ?>
 
@@ -502,4 +513,5 @@ require_once '../../assets/db/connectionMysql.php';
 
 
 </body>
+
 </html>
