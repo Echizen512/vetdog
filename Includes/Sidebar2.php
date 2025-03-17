@@ -162,9 +162,6 @@
                             <a href="../compra/nuevo">Registrar</a>
                         </li>
                         <li>
-                            <a href="../../folder/compra">Listar / Modificar</a>
-                        </li>
-                        <li>
                             <a href="../compra/compras_fecha">Consultar por fecha</a>
                         </li>
                     </ul>
@@ -179,12 +176,22 @@
                         <li>
                             <a href="../venta/nuevo">Registrar</a>
                         </li>
-                        <li>
-                            <a href="../../folder/venta">Listar / Modificar</a>
-                        </li>
 
                     </ul>
                 </li>
+
+                <li>
+          <a href="javascript:void(0);" class="menu-toggle">
+            <i class="material-icons">assessment</i>
+            <span>BITÁCORA</span>
+          </a>
+          <ul class="ml-menu">
+            <li>
+              <a href="../audit/mostrar.php">Mostrar</a>
+            </li>
+          </ul>
+        </li>
+
 
                 <aside id="rightsidebar" class="right-sidebar">
                 </aside>

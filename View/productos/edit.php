@@ -229,9 +229,7 @@ if (!isset($_SESSION['adminID'])) header('location: ./../login.php');
                             <li>
                                 <a href="../compra/nuevo">Registrar</a>
                             </li>
-                            <li>
-                                <a href="../../folder/compra">Listar / Modificar</a>
-                            </li>
+
                             <li>
                                 <a href="../compra/compras_fecha">Consultar por fecha</a>
                             </li>
@@ -247,9 +245,7 @@ if (!isset($_SESSION['adminID'])) header('location: ./../login.php');
                             <li>
                                 <a href="../venta/nuevo">Registrar</a>
                             </li>
-                            <li>
-                                <a href="../../folder/venta">Listar / Modificar</a>
-                            </li>
+
                             <li>
                                 <a href="../venta/venta_fecha">Consultar por fecha</a>
                             </li>

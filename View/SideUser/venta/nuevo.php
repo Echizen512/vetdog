@@ -77,7 +77,6 @@ $id_due = $_SESSION['ownerID'];
     align-items: center;
     margin-bottom: 20px;
 }
-
 </style>
 <section class="content">
     <div class="container-fluid">
@@ -104,9 +103,18 @@ $id_due = $_SESSION['ownerID'];
                             die("Error en la consulta: " . $con->error);
                         }
                         ?>
+
+                        <!-- Campo de búsqueda -->
                         <div class="row">
+                            <div class="col-lg-12">
+                                <input type="text" id="searchInput" class="form-control" placeholder="Buscar producto..." onkeyup="filterCards()">
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="row" id="productsContainer">
                             <?php while ($r = $products->fetch_object()): ?>
-                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="col-lg-3 col-md-4 col-sm-6 product-card" data-name="<?php echo strtolower(htmlspecialchars($r->nompro)); ?>">
                                     <div class="card">
                                         <div class="card-body text-center">
                                             <img src='../../../assets/img/subidas/<?php echo htmlspecialchars($r->foto); ?>' class='img-responsive'>
@@ -132,7 +140,6 @@ $id_due = $_SESSION['ownerID'];
                                                     <label class="text-center">Cantidad:</label>
                                                     <div class="input-group">
                                                     <input type="number" name="canti" value="1" min="1" class="form-control" placeholder="Cantidad" style="background-color: #e6ffe6;">
-
                                                     </div>
                                                     <button type="submit" class="btn btn-primary" style="border-radius: 30px;"><i class="material-icons">shopping_basket</i></button>
                                                 </form>
@@ -148,6 +155,24 @@ $id_due = $_SESSION['ownerID'];
         </div>
     </div>
 </section>
+
+<!-- Script para el filtro -->
+<script>
+function filterCards() {
+    const input = document.getElementById('searchInput').value.toLowerCase();
+    const cards = document.querySelectorAll('.product-card');
+
+    cards.forEach(card => {
+        const name = card.getAttribute('data-name');
+        if (name.includes(input)) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+</script>
+
 <?php include '../Includes/Footer3.php'; ?>
 </body>
 </html>

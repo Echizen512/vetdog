@@ -12,9 +12,23 @@
                     </div>
                     <div class="body">
                         <?php
-                            $con  = new mysqli("localhost","root","","vetdog");
-                            $products = $con->query("SELECT products.id_prod, products.codigo,products.foto,products.nompro, products.stock, products.precV, products.preciC,category.id_cate, category.nomcate, products.fere FROM products INNER JOIN category ON products.id_cate = category.id_cate  GROUP BY products.id_prod")
+                            $con  = new mysqli("localhost", "root", "", "vetdog");
+                            $products = $con->query("SELECT products.id_prod, products.codigo, products.foto, products.nompro, 
+                                                      products.stock, products.precV, products.preciC, category.id_cate, 
+                                                      category.nomcate, products.fere 
+                                                      FROM products 
+                                                      INNER JOIN category ON products.id_cate = category.id_cate  
+                                                      GROUP BY products.id_prod");
                         ?>
+
+                        <!-- Campo de búsqueda -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <input type="text" id="searchInput" class="form-control" placeholder="Buscar producto..." onkeyup="filterCards()">
+                            </div>
+                        </div>
+                        <br>
+
                         <style>
                         .card {
                             border-radius: 15px;
@@ -87,9 +101,10 @@
                             margin-bottom: 20px;
                         }
                         </style>
-                        <div class="row">
+
+                        <div class="row" id="productsContainer">
                             <?php while($r = $products->fetch_object()): ?>
-                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="col-lg-3 col-md-4 col-sm-6 product-card" data-name="<?php echo strtolower($r->nompro); ?>">
                                     <div class="card">
                                         <div class="card-body text-center">
                                             <img src='../../assets/img/subidas/<?php echo $r->foto; ?>' class='img-responsive'>
@@ -123,6 +138,23 @@
                                 </div>
                             <?php endwhile; ?>
                         </div>
+
+                        <!-- Script para el filtro de búsqueda -->
+                        <script>
+                        function filterCards() {
+                            const input = document.getElementById('searchInput').value.toLowerCase();
+                            const cards = document.querySelectorAll('.product-card');
+
+                            cards.forEach(card => {
+                                const name = card.getAttribute('data-name');
+                                if (name.includes(input)) {
+                                    card.style.display = 'block';
+                                } else {
+                                    card.style.display = 'none';
+                                }
+                            });
+                        }
+                        </script>
                     </div>
                 </div>
             </div>

@@ -245,9 +245,7 @@
                             <li class="active">
                                 <a href="../compra/nuevo">Registrar</a>
                             </li>
-                            <li>
-                                <a href="../../folder/compra">Listar / Modificar</a>
-                            </li>
+
                             <li>
                                 <a href="../compra/compras_fecha">Consultar por fecha</a>
                             </li>
@@ -263,9 +261,7 @@
                             <li>
                                 <a href="../venta/nuevo">Registrar</a>
                             </li>
-                            <li>
-                                <a href="../../folder/venta">Listar / Modificar</a>
-                            </li>
+
 
                         </ul>
                     </li>

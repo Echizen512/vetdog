@@ -115,9 +115,6 @@
               <a href="../View/compra/nuevo">Registrar</a>
             </li>
             <li>
-              <a href="../folder/compra">Listar / Modificar</a>
-            </li>
-            <li>
               <a href="../View/compra/compras_fecha">Consultar por fecha</a>
             </li>
 
@@ -132,9 +129,6 @@
           <ul class="ml-menu">
             <li>
               <a href="../View/venta/nuevo">Registrar</a>
-            </li>
-            <li>
-              <a href="../folder/venta">Listar / Modificar</a>
             </li>
             <li>
               <a href="../View/venta/venta_fecha">Consultar por fecha</a>
