@@ -176,49 +176,53 @@ input[type="checkbox"] {
                     </tr>
                   </thead>
                   <tbody>
-                    <?php
-                      $veterinarianID = $_SESSION['veterinarianID'];
-                      $sql = "SELECT * FROM quotes AS q JOIN veterinarian AS v JOIN owner AS o ON q.vetID = v.id_vet AND o.id_due = ownerID AND vetID = '$veterinarianID' ORDER BY q.dateCreation DESC";
-                      $results = mysqli_query($conn,$sql);
+                  <?php
+$sql = "SELECT * FROM quotes AS q 
+        JOIN veterinarian AS v 
+        JOIN owner AS o 
+        ON q.vetID = v.id_vet AND o.id_due = q.ownerID 
+        ORDER BY q.dateCreation DESC"; // Eliminamos el filtro "AND vetID = '$veterinarianID'"
+$results = mysqli_query($conn, $sql);
 
-                      foreach ($results as $key => $va) { ?>
-                        <tr>
-                          <td class="text-center"><?= $key + 1 ; ?></td>
-                          <td class="text-center"><?= $va['nom_due'] ?>&nbsp;<?= $va['ape_due'] ?></td>
-                          <?php 
-                            $quotesID = $va['quotesID'];
-                            $sql = "SELECT SUM(qs.priceTotal) as priceTotal FROM quotes_services as qs JOIN service AS s WHERE qs.serviceID = s.id_servi AND qs.quotesID = '$quotesID'";
+foreach ($results as $key => $va) { ?>
+    <tr>
+        <td class="text-center"><?= $key + 1; ?></td>
+        <td class="text-center"><?= $va['nom_due']; ?>&nbsp;<?= $va['ape_due']; ?></td>
+        <?php 
+        $quotesID = $va['quotesID'];
+        $sql = "SELECT SUM(qs.priceTotal) as priceTotal 
+                FROM quotes_services as qs 
+                JOIN service AS s 
+                ON qs.serviceID = s.id_servi 
+                WHERE qs.quotesID = '$quotesID'";
+        $result = mysqli_query($conn, $sql);
+        foreach ($result as $row) { ?>
+            <td class="text-center"><?= $va['cost'] + $row['priceTotal']; ?>$</td>
+        <?php } ?>
+        <td class="text-center"><?= date('d/m/Y', strtotime($va['start'])); ?></td>
+        <td class="text-center"><?= date('d/m/Y', strtotime($va['end'])); ?></td>
+        <td style="display: flex;justify-content: center;">
+            <button onclick="nose('<?= $va['quotesID']; ?>', '<?= $va['ownerID']; ?>')" class="btn bg-blue btn-circle waves-effect waves-circle waves-float btn-pdf" style="display: grid;place-items: center;">
+                <img src="./../../../assets/icons/TeenyiconsPdfOutline.svg" style="width: 100%;height: 100%;"/>
+            </button>
+            <?php if ($va['status'] == 1) { ?>
+                <button class="btn btn-primary showDiagnosis" value="<?= $va['quotesID']; ?>">Ver Diagnóstico</button>
+                <button class="btn btn-primary" style="transform: scale(0.8)" onClick="updateDiagnosis(<?= $va['quotesID']; ?>)">Editar</button>
+            <?php } ?>
+        </td> 
+        <td class="text-center">
+            <div style="display: flex;justify-content: center;gap: 20px;align-items: center">
+                <?php
+                if ($va['status'] == 1) { ?>
+                    <span class="label label-success" style="transform: scale(1.2);">Atendido</span>
+                <?php } else { ?>
+                    <input type="checkbox" class="checkbox-verify" value="<?= $va['quotesID']; ?>" style="transform: scale(1.5);">
+                <?php } ?>
+            </div>
+        </td>
+    </tr>
+<?php } ?>
 
-                            $result = mysqli_query($conn,$sql);
-                            foreach ($result as $row) { ?>
-                              <td class="text-center"><?= $va['cost'] + $row['priceTotal'] ?>$</td>
-                            <?php } ?>
-                          <td class="text-center"><?= date('d/m/Y',strtotime($va['start'])) ?></td>
-                          <td class="text-center"><?= date('d/m/Y',strtotime($va['end'])) ?></td>
-                          <td style="display: flex;justify-content: center;">
-                            <button onclick="nose('<?= $va['quotesID'] ?>','<?= $va['ownerID'] ?>')" class="btn bg-blue btn-circle waves-effect waves-circle waves-float btn-pdf" style="display: grid;place-items: center;">
-                              <img src="./../../../assets/icons/TeenyiconsPdfOutline.svg" style="width: 100%;height: 100%;"/>
-                            </button>
-                            <!-- <button class="btn btn-primary">Editar</button> -->
-                            <?php if ($va['status'] == 1) { ?>
-                              <button class="btn btn-primary showDiagnosis" value="<?= $va['quotesID'] ?>">Ver Diagnóstico</button>
-                              <button class="btn btn-primary" style="transform: scale(0.8)" onClick="updateDiagnosis(<?= $va['quotesID'] ?>)">Editar</button>
-                            <?php }?>
-                          </td> 
-                          <td class="text-center">
-                            <div style="display: flex;justify-content: center;gap: 20px;align-items: center">
-                              <?php
-                              if ($va['status'] == 1) { ?>
-                                  <span class="label label-success" style="transform: scale(1.2);">Atendido</span>
-                              <?php } else { ?>
-                                  <input type="checkbox" class="checkbox-verify" value="<?= $va['quotesID'] ?>" style="transform: scale(1.5);">
-                              <?php } ?>
-                            </div>
-                          </td>
-                        </tr>
-                    <?php
-                      }
-                    ?>
                   </tbody>
                 </table> 
               </div>

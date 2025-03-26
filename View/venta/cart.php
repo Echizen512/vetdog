@@ -219,7 +219,8 @@ require_once '../../assets/db/connectionMysql.php';
                                                 onchange="verSeleccion()">
                                                 <option value="">-- Seleccione una forma --</option>
                                                 <option value="efectivo">EFECTIVO</option>
-                                                <option value="tarjeta">TARJETA DE DEBITO / CREDITO</option>
+                                                
+                                                <option value="pagomovil">PAGO MÓVIL</option>
                                             </select>
                                         </div>
                                         <?php
@@ -269,6 +270,19 @@ require_once '../../assets/db/connectionMysql.php';
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-sm-5" id="pagomovil" style="display: none; padding: 15px;">
+        <h4>Datos de Pago Móvil</h4>
+        <p><strong>Nombre:</strong> Vetdog</p>
+        <p><strong>DNI:</strong> 30.091.390</p>
+        <p><strong>Banco:</strong> 0102 (Venezuela)</p>
+        <p><strong>Teléfono:</strong> 0424-3363970</p>
+        
+        <label class="control-label">Número de Referencia:</label>
+        <div class="form-line">
+        <input type="text" name="ref" id="ref" class="form-control" placeholder="Ingrese el número de referencia" required>
+
+        </div>
+    </div>
                                     <div class="row clearfix">
                                         <div class="col-sm-5" style="margin-left:15px;">
                                             <div class="form-group" id="tarjeta">
@@ -361,6 +375,15 @@ require_once '../../assets/db/connectionMysql.php';
         </div>
     </section>
 
+    <script>document.querySelector('form').onsubmit = function(e) {
+    var ref = document.getElementById('ref').value;
+    if (!ref) {
+        e.preventDefault(); // Evitar el envío del formulario si no hay referencia
+        alert("Por favor, ingrese el número de referencia.");
+    }
+};
+    </script>
+
 
     <script src="../../assets/plugins/jquery/jquery.min.js"></script>
     <script src="../../assets/js/card-js.min.js"></script>
@@ -452,7 +475,14 @@ require_once '../../assets/db/connectionMysql.php';
         } else if (seleccionado == 'tarjeta') {
             efectivo.style.display = 'none';
             tarjeta.style.display = 'block';
-        } else {
+        } 
+        else if (seleccionado == 'pagomovil') {
+            efectivo.style.display = 'none';
+            tarjeta.style.display = 'none';
+            pagomovil.style.display = 'block';
+            
+        }
+        else {
             tarjeta.style.display = 'none';
             efectivo.style.display = 'none';
         }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-01-2025 a las 04:53:16
+-- Tiempo de generación: 26-03-2025 a las 01:52:49
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -263,7 +263,19 @@ INSERT INTO `audit` (`audit`, `tableID`, `table_name`, `userID`, `rol`, `action`
 (310, 11, 'producto', 1, 'administrador', 'Se creó un producto', '2024-09-13 18:49:52'),
 (311, 12, 'producto', 1, 'administrador', 'Se creó un producto', '2024-09-13 20:33:22'),
 (312, 13, 'producto', 1, 'administrador', 'Se creó un producto', '2024-09-13 20:37:09'),
-(313, 25, 'categoria', 1, 'administrador', 'Se creó una categoría', '2025-01-16 21:43:14');
+(313, 25, 'categoria', 1, 'administrador', 'Se creó una categoría', '2025-01-16 21:43:14'),
+(314, 40, 'venta', 0, 'administrador', 'Se insertó una venta', '2025-03-25 23:38:07'),
+(315, 216, 'cita', 26, 'usuario', 'Se creó una cita', '2025-03-26 05:00:00'),
+(316, 217, 'cita', 26, 'usuario', 'Se creó una cita', '2025-03-26 05:06:04'),
+(317, 218, 'cita', 26, 'usuario', 'Se creó una cita', '2025-03-26 05:07:11'),
+(318, 219, 'cita', 26, 'usuario', 'Se creó una cita', '2025-03-26 05:07:34'),
+(319, 41, 'venta', 0, 'administrador', 'Se insertó una venta', '2025-03-26 00:16:35'),
+(320, 42, 'venta', 0, 'administrador', 'Se insertó una venta', '2025-03-26 00:18:36'),
+(321, 220, 'cita', 26, 'usuario', 'Se creó una cita', '2025-03-26 05:25:23'),
+(322, 221, 'cita', 26, 'usuario', 'Se creó una cita', '2025-03-26 05:40:28'),
+(323, 222, 'cita', 26, 'usuario', 'Se creó una cita', '2025-03-26 05:47:39'),
+(324, 0, 'cita', 1, 'administrador', 'Se acepto una solicitud de cita', '2025-03-26 05:48:38'),
+(325, 43, 'venta', 0, 'administrador', 'Se insertó una venta', '2025-03-26 00:51:30');
 
 -- --------------------------------------------------------
 
@@ -343,16 +355,34 @@ INSERT INTO `compra` (`id_compra`, `fecha`, `estado`, `id_prove`, `total`, `tipo
 (2, '2021-12-22', '1', 3, 75.00, 'Factura', 'Contado'),
 (3, '2021-12-10', '1', 2, 195.00, 'Factura', 'Credito'),
 (4, '2021-12-06', '1', 1, 31.00, 'Boleta', 'Contado'),
-(5, '2021-12-23', '1', 12, 60.00, 'Ticket', 'Credito'),
+(5, '2021-12-23', '0', 12, 60.00, 'Ticket', 'Credito'),
 (6, '2021-12-23', '1', 13, 15.00, 'Boleta', 'Contado'),
 (7, '2021-12-24', '1', 13, 382.00, 'Boleta', 'Contado'),
-(8, '2021-12-25', '1', 13, 351.00, 'Boleta', 'Contado'),
+(8, '2021-12-25', '0', 13, 351.00, 'Boleta', 'Contado'),
 (9, '2024-09-13', '1', 1, 31.00, 'Ticket', 'Contado'),
 (10, '2024-09-13', '1', 1, 12.00, 'Ticket', 'Contado'),
 (11, '2024-09-13', '1', 3, 22.00, 'Factura', 'Contado'),
 (12, '2024-09-13', '1', 12, 31.00, 'Factura', 'Credito'),
 (13, '2024-09-13', '1', 1, 12.00, 'Ticket', 'Contado'),
-(14, '2024-09-13', '1', 2, 12.00, 'Boleta', 'Contado');
+(14, '2024-09-13', '0', 2, 12.00, 'Boleta', 'Contado');
+
+--
+-- Disparadores `compra`
+--
+DELIMITER $$
+CREATE TRIGGER `after_compra_insert` AFTER INSERT ON `compra` FOR EACH ROW BEGIN
+    INSERT INTO audit (tableID, table_name, userID, rol, action, date)
+    VALUES (NEW.id_compra, 'compra', USER(), 'administrador', 'Se insertó una compra', NOW());
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `after_compra_update` AFTER UPDATE ON `compra` FOR EACH ROW BEGIN
+    INSERT INTO audit (tableID, table_name, userID, rol, action, date)
+    VALUES (NEW.id_compra, 'compra', USER(), 'administrador', 'Se actualizó una compra', NOW());
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -572,7 +602,17 @@ INSERT INTO `productos_vendidos` (`id_pvendi`, `id_prod`, `canti`, `id_venta`) V
 (33, 1, 1, 30),
 (34, 1, 1, 31),
 (35, 1, 1, 32),
-(36, 1, 1, 33);
+(36, 1, 1, 33),
+(37, 1, 1, 34),
+(38, 1, 1, 35),
+(39, 1, 1, 36),
+(40, 1, 1, 37),
+(41, 1, 1, 38),
+(42, 1, 1, 39),
+(43, 1, 1, 40),
+(44, 1, 1, 41),
+(45, 1, 1, 42),
+(46, 1, 1, 43);
 
 -- --------------------------------------------------------
 
@@ -602,7 +642,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id_prod`, `codigo`, `id_cate`, `foto`, `nompro`, `peso`, `weightID`, `id_prove`, `descp`, `preciC`, `precV`, `stock`, `estado`, `fere`) VALUES
-(1, '00000001', 2, 'collar1.jpeg', 'Julius K9 Collar de Adiestramiento Cordino', '90 GR', 0, 2, 'El collar cordino Julius K9 es la elección perfecta para entrenamientos en lugar de collares. Hecho de cordón textil rígido de 3,5 mm, utilizado frecuentemente por entrenadores de perros para perros agresivos o perros en pánico. Recomendado para usar con ', 31.00, 21.00, '88', '1', '2025-01-19 02:54:49'),
+(1, '00000001', 2, 'collar1.jpeg', 'Julius K9 Collar de Adiestramiento Cordino', '90 GR', 0, 2, 'El collar cordino Julius K9 es la elección perfecta para entrenamientos en lugar de collares. Hecho de cordón textil rígido de 3,5 mm, utilizado frecuentemente por entrenadores de perros para perros agresivos o perros en pánico. Recomendado para usar con ', 31.00, 21.00, '78', '1', '2025-03-26 00:51:30'),
 (2, '00000002', 7, 'anti.jpg', 'Specialcan Insecticida Ambiental Perros Y Gatos 250 Ml', '250ml', 0, 1, 'Specialcan Insecticida Ambiental Perros Y Gatos 250 Ml.', 21.00, 35.00, '38', '1', '2024-09-12 20:13:44'),
 (3, '00000003', 6, 'snac.jpg', 'Apetitus Galletas Vainilla Biscuits', '500GR', 0, 1, 'Las Galletas Vainilla Biscuits de Apetitus son snacks para perro para dar como premio o recompensa en cualquier momento del día como parte de una dieta equilibrada. Su calidad se obtiene gracias a los ingredientes y al Bakery Selection', 65.00, 35.00, '28', '1', '2025-01-18 21:36:27'),
 (5, '00000007', 7, 'anti2.jpg', 'Bayer Advantage Pipeta Gato 0-4 kg.', '80', 0, 3, 'Advantage® Spot-On es una solución de Imidacloprid lista para su aplicación tópica sobre la piel del gato. Mata las pulgas dentro de las 24 horas de aplicado. Previene las re-infestaciones por hasta 1 mes. De muy fácil aplicación es ideal para evitar el e', 20.00, 30.00, '93', '1', '2021-12-26 02:37:00'),
@@ -664,7 +704,10 @@ INSERT INTO `quotes` (`quotesID`, `ownerID`, `vetID`, `number_quote`, `diagnosis
 (212, 34, 15, 'FAC-756350', 'Se realiza estÃ©tica y limpieza', 'Nohemi Fernandez', 5, '2024-04-16', '2024-04-16', '2024-04-15 19:11:38', '1'),
 (213, 28, 17, 'FAC-197750', 'Se realiza servicio de estÃ©tica y limpieza.', 'Beatriz Fagundez', 5, '2024-04-16', '2024-04-16', '2024-04-15 19:20:05', '1'),
 (214, 28, 17, 'FAC-982971', 'Se realiza el servicio sin observaciones', 'Beatriz Fagundez', 5, '2024-04-16', '2024-04-16', '2024-04-15 19:37:42', '1'),
-(215, 34, 17, 'FAC-522973', '', 'yo', 4, '2024-06-11', '2024-06-11', '2024-04-16 18:21:56', '0');
+(215, 34, 17, 'FAC-522973', '', 'yo', 4, '2024-06-11', '2024-06-11', '2024-04-16 18:21:56', '0'),
+(220, 26, 15, 'FAC-929902', '', '', 0, '0000-00-00', '0000-00-00', '2025-03-26 05:25:23', '0'),
+(221, 26, NULL, 'FAC-499783', '', '', 0, '2025-03-26', '2025-03-27', '2025-03-26 05:40:28', '0'),
+(222, 26, 15, 'FAC-133234', '', 'Betty', 10, '2025-03-26', '2025-03-27', '2025-03-26 05:47:39', '0');
 
 -- --------------------------------------------------------
 
@@ -724,7 +767,10 @@ INSERT INTO `quotes_pets` (`quotes_petsID`, `quotesID`, `petsID`) VALUES
 (269, 213, 64),
 (270, 214, 62),
 (271, 214, 64),
-(272, 215, 66);
+(272, 215, 66),
+(279, 220, 58),
+(280, 221, 56),
+(281, 222, 59);
 
 -- --------------------------------------------------------
 
@@ -793,7 +839,10 @@ INSERT INTO `quotes_services` (`quotes_servicesID`, `quotesID`, `serviceID`, `pr
 (297, 213, 11, 10, 20),
 (298, 213, 15, 8, 16),
 (300, 214, 13, 5, 10),
-(302, 215, 11, 10, 10);
+(302, 215, 11, 10, 10),
+(308, 220, 13, 5, 5),
+(309, 221, 12, 25, 25),
+(311, 222, 13, 5, 5);
 
 -- --------------------------------------------------------
 
@@ -950,47 +999,62 @@ CREATE TABLE `venta` (
   `expyear` char(2) NOT NULL,
   `cvc` char(4) NOT NULL,
   `recibir` decimal(10,2) NOT NULL,
-  `cambio` decimal(10,2) NOT NULL
+  `cambio` decimal(10,2) NOT NULL,
+  `ref` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `venta`
 --
 
-INSERT INTO `venta` (`id_venta`, `fecha`, `numfact`, `estado`, `id_due`, `total`, `tipoc`, `tipopa`, `numtarj`, `typetarj`, `nomtarj`, `expmon`, `expyear`, `cvc`, `recibir`, `cambio`) VALUES
-(1, '2021-12-25 18:11:37', 1, '1', 8, 21.00, 'Boleta', 'efectivo', '', '', '', '', '', '', 100.00, 79.00),
-(2, '2021-12-25 19:55:06', 2, '1', 8, 93.00, 'Boleta', 'efectivo', '', '', '', '', '', '', 100.00, 7.00),
-(3, '2021-12-25 21:36:59', 3, '1', 6, 153.00, 'Boleta', 'efectivo', '', '', '', '', '', '', 200.00, 47.00),
-(4, '2021-12-26 00:02:49', 4, '1', 7, 135.00, 'Boleta', 'efectivo', '3455 656565 65656', 'AMEX', '', '9', '22', '2222', 200.00, 65.00),
-(5, '2024-09-13 08:38:07', 5, '1', 26, 21.00, 'Ticket', 'efectivo', '', '', '', '', '', '', 22.00, 1.00),
-(6, '2024-09-13 10:58:03', 6, '1', 0, 22.00, 'Ticket', 'efectivo', '', '', '', '', '', '', 23.00, 1.00),
-(7, '2024-09-13 11:02:31', 7, '1', 27, 33.00, 'Boleta', 'efectivo', '', '', '', '', '', '', 33.00, 0.00),
-(8, '2024-10-10 17:04:13', 8, '1', 35, 33.00, 'Boleta', 'Tarjeta', '', '', '', '', '', '', 0.00, 0.00),
-(9, '2024-10-10 19:13:08', 9, '1', 35, 22.00, 'Factura', 'Tarjeta', '', '', '', '', '', '', 0.00, 0.00),
-(10, '2024-10-12 10:02:53', 10, '1', 26, 21.00, 'Factura', 'Tarjeta', '', '', '', '', '', '', 0.00, 0.00),
-(11, '2024-11-03 07:58:28', 11, '1', 26, 33.00, 'Boleta', 'Tarjeta', '', '', '', '', '', '', 0.00, 0.00),
-(12, '2024-11-03 08:05:51', 12, '1', 26, 33.00, 'Boleta', 'Tarjeta', '', '', '', '', '', '', 0.00, 0.00),
-(13, '2025-01-16 22:28:03', 13, '1', 21, 21.00, 'Factura', 'efectivo', '', '', '', '', '', '', 100.00, 79.00),
-(14, '2025-01-18 17:04:20', 14, '1', 21, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
-(15, '2025-01-18 17:31:41', 15, '1', 24, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
-(16, '2025-01-18 17:32:49', 16, '1', 21, 35.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
-(17, '2025-01-18 17:36:27', 17, '1', 26, 35.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
-(18, '2025-01-18 21:12:26', 18, '1', 26, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
-(19, '2025-01-18 21:14:50', 19, '1', 26, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
-(20, '2025-01-18 21:16:53', 20, '1', 26, 22.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
-(21, '2025-01-18 21:52:52', 21, '1', 0, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
-(22, '2025-01-18 21:53:58', 22, '1', 0, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
-(23, '2025-01-18 21:56:06', 23, '1', 0, 5.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
-(24, '2025-01-18 21:56:23', 24, '1', 0, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
-(25, '2025-01-18 21:57:41', 25, '1', 0, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
-(26, '2025-01-18 22:00:49', 26, '1', 0, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
-(27, '2025-01-18 22:11:47', 27, '1', 0, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
-(28, '2025-01-18 22:13:13', 28, '1', 0, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
-(29, '2025-01-18 22:13:56', 29, '1', 0, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
-(30, '2025-01-18 22:14:50', 30, '1', 26, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
-(31, '2025-01-18 22:17:20', 31, '1', 26, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
-(32, '2025-01-18 22:17:59', 32, '1', 26, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00),
-(33, '2025-01-18 22:54:49', 33, '1', 26, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00);
+INSERT INTO `venta` (`id_venta`, `fecha`, `numfact`, `estado`, `id_due`, `total`, `tipoc`, `tipopa`, `numtarj`, `typetarj`, `nomtarj`, `expmon`, `expyear`, `cvc`, `recibir`, `cambio`, `ref`) VALUES
+(15, '2025-01-18 17:31:41', 15, '1', 24, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00, NULL),
+(16, '2025-01-18 17:32:49', 16, '1', 21, 35.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00, NULL),
+(17, '2025-01-18 17:36:27', 17, '1', 26, 35.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00, NULL),
+(18, '2025-01-18 21:12:26', 18, '1', 26, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00, NULL),
+(19, '2025-01-18 21:14:50', 19, '1', 26, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00, NULL),
+(20, '2025-01-18 21:16:53', 20, '1', 26, 22.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00, NULL),
+(21, '2025-01-18 21:52:52', 21, '1', 0, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00, NULL),
+(22, '2025-01-18 21:53:58', 22, '1', 0, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00, NULL),
+(23, '2025-01-18 21:56:06', 23, '1', 0, 5.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00, NULL),
+(24, '2025-01-18 21:56:23', 24, '1', 0, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00, NULL),
+(25, '2025-01-18 21:57:41', 25, '1', 0, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00, NULL),
+(26, '2025-01-18 22:00:49', 26, '1', 0, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00, NULL),
+(27, '2025-01-18 22:11:47', 27, '1', 0, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00, NULL),
+(28, '2025-01-18 22:13:13', 28, '1', 0, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00, NULL),
+(29, '2025-01-18 22:13:56', 29, '1', 0, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00, NULL),
+(30, '2025-01-18 22:14:50', 30, '1', 26, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00, NULL),
+(31, '2025-01-18 22:17:20', 31, '1', 26, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00, NULL),
+(32, '2025-01-18 22:17:59', 32, '0', 26, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00, NULL),
+(33, '2025-01-18 22:54:49', 33, '0', 26, 21.00, 'Factura', 'tarjeta', '', '', '', '', '', '', 0.00, 0.00, NULL),
+(34, '2025-03-25 17:36:45', 34, '1', 26, 21.00, 'Factura', 'pagomovil', '', '', '', '', '', '', 0.00, 0.00, NULL),
+(35, '2025-03-25 17:43:18', 35, '1', 26, 21.00, 'Factura', 'pagomovil', '', '', '', '', '', '', 0.00, 0.00, NULL),
+(36, '2025-03-25 17:48:41', 36, '1', 26, 21.00, 'Factura', 'pagomovil', '', '', '', '', '', '', 0.00, 0.00, NULL),
+(37, '2025-03-25 17:53:23', 37, '1', 26, 21.00, 'Factura', 'pagomovil', '', '', '', '', '', '', 0.00, 0.00, NULL),
+(38, '2025-03-25 17:55:20', 38, '1', 26, 21.00, 'Factura', 'pagomovil', '', '', '', '', '', '', 0.00, 0.00, NULL),
+(39, '2025-03-25 17:58:57', 39, '1', 26, 21.00, 'Factura', '0', '', '', '', '', '', '0', 0.00, 0.00, '1212'),
+(40, '2025-03-25 19:38:07', 40, '1', 26, 21.00, 'Factura', '0', '', '', '', '', '', '0', 0.00, 0.00, '122'),
+(41, '2025-03-25 20:16:35', 41, '1', 26, 21.00, 'Factura', '0', '', '', '', '', '', '0', 0.00, 0.00, '1212'),
+(42, '2025-03-25 20:18:36', 42, '1', 26, 21.00, 'Factura', '0', '', '', '', '', '', '0', 0.00, 0.00, '111'),
+(43, '2025-03-25 20:51:30', 43, '1', 26, 21.00, 'Factura', '0', '', '', '', '', '', '0', 0.00, 0.00, '1432');
+
+--
+-- Disparadores `venta`
+--
+DELIMITER $$
+CREATE TRIGGER `after_venta_insert` AFTER INSERT ON `venta` FOR EACH ROW BEGIN
+    INSERT INTO audit (tableID, table_name, userID, rol, action, date)
+    VALUES (NEW.id_venta, 'venta', USER(), 'administrador', 'Se insertó una venta', NOW());
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `after_venta_update` AFTER UPDATE ON `venta` FOR EACH ROW BEGIN
+    INSERT INTO audit (tableID, table_name, userID, rol, action, date)
+    VALUES (NEW.id_venta, 'venta', USER(), 'administrador', 'Se actualizó una venta', NOW());
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -1229,7 +1293,7 @@ ALTER TABLE `animales`
 -- AUTO_INCREMENT de la tabla `audit`
 --
 ALTER TABLE `audit`
-  MODIFY `audit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=314;
+  MODIFY `audit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=326;
 
 --
 -- AUTO_INCREMENT de la tabla `cargo`
@@ -1283,7 +1347,7 @@ ALTER TABLE `productos_comprados`
 -- AUTO_INCREMENT de la tabla `productos_vendidos`
 --
 ALTER TABLE `productos_vendidos`
-  MODIFY `id_pvendi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_pvendi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT de la tabla `products`
@@ -1295,19 +1359,19 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT de la tabla `quotes`
 --
 ALTER TABLE `quotes`
-  MODIFY `quotesID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=216;
+  MODIFY `quotesID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=223;
 
 --
 -- AUTO_INCREMENT de la tabla `quotes_pets`
 --
 ALTER TABLE `quotes_pets`
-  MODIFY `quotes_petsID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=273;
+  MODIFY `quotes_petsID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=282;
 
 --
 -- AUTO_INCREMENT de la tabla `quotes_services`
 --
 ALTER TABLE `quotes_services`
-  MODIFY `quotes_servicesID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=303;
+  MODIFY `quotes_servicesID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=312;
 
 --
 -- AUTO_INCREMENT de la tabla `raza`
@@ -1337,7 +1401,7 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT de la tabla `venta`
 --
 ALTER TABLE `venta`
-  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT de la tabla `veterinarian`
