@@ -33,7 +33,7 @@
 			try{
 				$pdo = AccesoDB::getConnectionPDO();
 				
-				$sql = "SELECT id_venta, fecha, venta.estado, owner.id_due, owner.dni_due, owner.nom_due, owner.ape_due, owner.correo, owner.movil, owner.fijo, owner.direc, venta.total, venta.tipoc, venta.tipopa, venta.numtarj, venta.typetarj, venta.nomtarj, venta.expmon, venta.expyear, venta.cvc, venta.recibir, venta.cambio FROM venta INNER JOIN owner ON venta.id_due = owner.id_due WHERE venta.estado='1'  ORDER BY id_venta DESC";
+				$sql = "SELECT id_venta, fecha, venta.estado, owner.id_due, owner.dni_due, owner.nom_due, owner.ape_due, owner.correo, owner.movil, owner.fijo, owner.direc, venta.total, venta.tipoc, venta.tipopa, venta.numtarj, venta.typetarj, venta.nomtarj, venta.expmon, venta.expyear, venta.cvc, venta.recibir, venta.cambio, venta.ref FROM venta INNER JOIN owner ON venta.id_due = owner.id_due WHERE venta.estado='1'  ORDER BY id_venta DESC";
 				
 				$stmt = $pdo->prepare($sql);
 				$stmt->execute();
@@ -50,7 +50,7 @@
 			try{
 				$pdo = AccesoDB::getConnectionPDO();
 				
-				$sql = 'SELECT venta.id_venta, venta.fecha, venta.estado, owner.id_due, owner.dni_due, owner.nom_due, owner.ape_due, owner.correo, owner.movil, owner.fijo, owner.direc, venta.total, venta.tipoc, venta.tipopa, venta.numtarj, venta.typetarj, venta.nomtarj, venta.expmon, venta.expyear, venta.cvc, venta.recibir, venta.cambio FROM venta INNER JOIN owner ON venta.id_due = owner.id_due WHERE  venta.fecha BETWEEN "'.$desde.'" AND "'.$hasta.'" ORDER BY id_venta DESC';
+				$sql = 'SELECT venta.id_venta, venta.fecha, venta.estado, owner.id_due, owner.dni_due, owner.nom_due, owner.ape_due, owner.correo, owner.movil, owner.fijo, owner.direc, venta.total, venta.tipoc, venta.tipopa, venta.numtarj, venta.typetarj, venta.nomtarj, venta.expmon, venta.expyear, venta.cvc, venta.recibir, venta.cambio, venta.ref FROM venta INNER JOIN owner ON venta.id_due = owner.id_due WHERE  venta.fecha BETWEEN "'.$desde.'" AND "'.$hasta.'" ORDER BY id_venta DESC';
 				
 				$stmt = $pdo->prepare($sql);
 				$stmt->execute();

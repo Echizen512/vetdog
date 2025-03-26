@@ -378,9 +378,10 @@ $total = $result->fetchColumn();
                                                        
                                                         <th class="text-center">Fecha</th>
                                                         <th class="text-center">Clientes</th>
-                                                        <th class="text-center">Tipo pago</th>
+
                                                         <th class="text-center">Total</th>
                                                         <th class="text-center">Estado</th>
+                                                        <th class="text-center">Referencia</th>
                                                         <th class="text-center">Opciones</th>
                                                         
                                                         
@@ -421,7 +422,6 @@ $total = $result->fetchColumn();
                                                        
                                                         <th class="text-center">Fecha</th>
                                                         <th class="text-center">Proveedor</th>
-                                                        <th class="text-center">Tipo pago</th>
                                                         <th class="text-center">Total</th>
                                                         <th class="text-center">Estado</th>
                                                         <th class="text-center">Opciones</th>
